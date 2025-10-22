@@ -1,30 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-function onUserStateChanged(callback) {
-  onAuthStateChanged(auth, callback);
-}
-const firebaseConfig = {
-  apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
-  authDomain: "spuma-banco.firebaseapp.com",
-  projectId: "spuma-banco",
-  storageBucket: "spuma-banco.appspot.com",
-  messagingSenderId: "447336546434",
-  appId: "1:447336546434:web:23802d28de45fbedc2349b",
-  measurementId: "G-4BJ95WYKF5",
-};
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-async function getUserData(uid) {
-  const docRef = doc(db, "usuarios", uid);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    return docSnap.data(); 
-  } else {
-    return null;
-  }
-}
 const arquivo_json = [
   {
     "marca": "Vonixx",
@@ -354,26 +327,30 @@ botao_pedido.addEventListener("click", function() {
   area_pedido.style.display = "block"
   forapedido.style.display = "block"
 })
+const carro = window.document.getElementById("carro")
 const finalizar_pedido = window.document.getElementById("finaliza-pedido")
 finalizar_pedido.addEventListener("click", function() {
- onUserStateChanged(async user => {
   const valor_rua = window.document.getElementById("rua").value
-  if (user) {
-    const userData = await getUserData(user.uid);
-    if(user.rua != "") {
-      valor_rua.value = userData.rua
-    }
  const formas_de_pagamento = window.document.getElementById("right-centro-pedido")
-  const carro = window.document.getElementById("carro").value
   const aviso = window.document.getElementById("aviso")
   if(!valor_rua || !carro){
     aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!"
   } else {
-   
-    formas_de_pagamento.classList.add("abriu")
-  } 
-  } else {
     window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
   }
 })
+carro.addEventListener("input", async function() {
+  try {
+    const carro_array = carro.value.split(" ")
+    
+    console.log(carro_array)
+    const api = await fetch(`https://carapi.app/api/models?year=${year}&make=${make}&model=${model}`)
+    if(!api.ok) {
+      throw new Error("erro")
+    }
+  }
+  catch(error) { 
+    console.error("Erro" + error)
+
+  }
 })
