@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spuma Website - Login</title>
+    <link rel="stylesheet" href="../Assets/CSS/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="container">
+        <button onclick="window.history.back()" id="volte"><</button>
+        <div id="login">
+            <p id="parag-login">LOGIN</p>
+            <br>
+            <p class="labelos">Email/Nome de usuário:</p>
+            <input type="text" name="email" id="email">
+            <br>
+            <p class="labelos">Senha:</p>
+            <div id="senha-detalhes">
+                  <input type="password" placeholder="Senha123." name="senha" id="senhas">
+            <button id="show-and-hide">
+                <i class='bx bx-hide' id="abrir-fechar"></i>
+            </button>
+            </div>
+            <div id="login-baixo">
+                
+            <a href="" id="esqueci">Esqueceu sua senha?</a>
+            <p>Ainda não tem uma conta ? <a href="cadastro.html">Cadastre-se</a></p>
+            <button value="Enviar" id="button-enviar">Enviar</button>
+            <br>
+                <div id="login-alternativas">
+                    <button id="google-button">
+                        <i class='bx bxl-google'></i>  
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="modo-dark-and-light">
+             <div id="bolinha"></div>
+            
+            </div>
+    <div id="menu-for-phones">
+        <nav>
+            <a href="../index.html"><i class='bx  bx-home-alt-2'></i> </a>
+        <a href="./planos.html"><i class='bx  bx-wallet-alt'  ></i></a> 
+        <a href=""><i class='bx  bx-package'></i></a>
+        <a href=""><i class='bx  bx-phone'></i></a> 
+        </nav>
+    </div>
+    <script type="module" src="../Assets/Javascript/login-banco.js"></script>
+    <script src="../Assets/Javascript/login.js"></script>
+</body>
+</html>

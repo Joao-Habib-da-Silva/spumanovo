@@ -1,0 +1,221 @@
+@import url(./global.css);
+#container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+#cadastro {
+    width: 35%;
+    font-family: "Roboto";
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius:30px ;
+    padding-top: 4vw;
+    padding-left: 4vw;
+    padding-right:4vw ;
+    background-color: var(--dark-light);
+}
+#button-enviar {
+    width: 25vh;
+    border-radius: 30px;
+    background-color: var(--dark-light);
+    height: 3rem;
+    margin-top: 20px;
+    border: 3px solid var(--light);
+    color: var(--light);
+    font-weight: 600;
+    z-index: 10;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    position: relative;
+}
+
+#button-enviar::after {
+    position: absolute;
+    width: 24.5vh;
+    border-radius: 30px;
+    z-index: -2;
+    height: 2.7rem;
+    transition: 0.4s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    content: "";
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    background-color: var(--light);
+}
+#button-enviar:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+#button-enviar:hover {
+    color: var(--dark);
+
+}
+
+.show-and-hide {
+    width: 3rem;
+    height: 4rem;
+    background-color: var(--dark-light);
+    border-top: 3px solid var(--light);
+    border-right: 3px solid var(--light);
+    border-bottom: 3px solid var(--light);
+    cursor: pointer;
+    color: var(--light);
+    border-left: none;
+    border-radius: 0px 10px 10px 0px;
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+.show-and-hide i {
+    font-size: 2rem;
+}
+#volte {
+    width: 5rem;
+    margin-top: 20px;
+    font-size: 3rem;
+    height: 5rem;
+    font-weight: 600;
+    color: var(--light);
+    background-color: var(--dark-light);
+    border-radius: 50%;
+    margin-left: 20px;
+    border: none;
+}
+
+#login-baixo {
+    height: 18rem;
+    margin-top: 50px;
+    text-align: center;
+}
+#login-alternativas {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+}
+#login-alternativas button {
+    width: 3rem;
+    border:none;
+    margin-left: 10px;
+    font-size: 2rem;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:50% ;
+    height: 3rem;
+    background-color: var(--dark);
+    scale: 1.0;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    color: var(--light);
+}
+#login-alternativas button:hover {
+    scale: 1.1;
+    background-color: var(--dark-light);
+}
+
+input {
+    width: 25rem;
+    border-radius: 10px; 
+    padding-left: 20px;
+    margin-top: 20px;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    color: var(--light);
+    background-color: var(--dark-light);
+    border: 3px solid var(--light);
+    height: 4rem;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+input::placeholder {
+    color: var(--light-dark);
+}
+#explicacao {
+    width: 40%;
+    left: 30%;
+    z-index: 1000;
+    background-color: var(--dark-light);
+    border-radius: 20px;
+    position: fixed;
+    display: none;
+    height: 100vh;
+    overflow-y: auto;
+    font-family: "Roboto";
+}
+#enderecos input{
+    width: 40%;
+    margin-right: 20px;
+}
+#explicacao.ligado {
+    display: block;
+}
+#politicas, #termos {
+    background-color: transparent;
+    border: none;
+    color: var(--light-dark);
+    font-size: 1.15rem;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+}
+#politicas:hover, #termos:hover {
+    color: var(--light);
+}
+.senhas {
+    width: 27rem;
+    border-radius: 10px 0px 0px 10px;
+    border-right: none ;
+}
+#idade {
+    width: 200px;
+    color: var(--light-dark);
+}
+input[type="checkbox"] {
+    --webkit-appearance: none;
+    --moz-appearance:none;
+    appearance: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+}
+input[type="checkbox"]:checked {
+    background-color: var(--light);
+}
+.senha-detalhes {
+    display: flex;
+    align-items: center;
+}
+#email {
+        width: 90%;
+}
+#aviso {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    color: var(--light);
+    font-size: 0.75rem;
+    height: 08%;
+}
+#modo-dark-and-light {
+    margin-right: 10px;
+    margin-top: 20px;
+
+}
+.linha {
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+a {
+    color: var(--light-dark);
+}
+.linha p {
+    margin-left: 20px;
+    font-size: 1.15rem;
+}
+a:hover, #esqueci:hover {
+    color: var(--light);
+}
