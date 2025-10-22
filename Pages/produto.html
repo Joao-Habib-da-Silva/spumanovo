@@ -73,8 +73,51 @@
         <div id="forapedido">
         </div>
     <div id="pedido"><div id="cimapedido">
-        <button>X</button>
-    </div></div>
+        <button id="sair-botao">X</button>
+    </div>
+    <div id="centropedido">
+       <div id="left-centro-pedido">
+         <input type="text" id="rua" placeholder="Ex: Rua ...">
+         <br>
+        <input type="text" id="carro" placeholder="">
+        <h1 id="tamanho-carro"></h1>
+        <div id="tipos-de-lavagem">
+            <div id="linha1">
+                
+            <input type="radio" name="lavagem" class="planos-escolhidos">
+            <h1>Lavagem simples</h1>
+            </div>
+           <div id="linha2">
+             <input type="radio"  name="lavagem" class="planos-escolhidos">
+            <h1>Lavagem detalhada</h1>
+           </div>
+            <div id="aplicacoesadicionais">
+                <h1>Adicionais</h1>
+                <div id="linha3"><input type="checkbox">
+                <h1>Aplicação de cera</h1></div>
+                <div id="linha4">
+                    <input type="checkbox" >
+                    <h1>Revitalização dos Plásticos</h1>
+                </div>
+            </div>
+       </div>
+       
+        </div>
+       <div id="right-centro-pedido">
+        
+       </div> 
+    </div>
+    <div id="finalpedido">
+        <div id="esquerda-final-pedido">
+            <h1 id="aviso"></h1>
+        </div>
+        <div id="direita-final-pedido">
+           <h1 id="valor"></h1>
+        <button id="finaliza-pedido">Finalizar pedido</button> 
+        </div>
+    </div>
+    
+</div>
     </div>
     
     <div id="menu-for-phones">
@@ -86,6 +129,6 @@
         </nav>
     </div>
     <script type="module" src="../Assets/Javascript/global.js"></script>
-    <script src="../Assets/Javascript/produto.js"></script>
+    <script type="module" src="../Assets/Javascript/produto.js"></script>
 </body>
 </html>

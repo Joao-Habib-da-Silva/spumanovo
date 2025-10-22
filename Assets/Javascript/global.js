@@ -51,7 +51,6 @@ onUserStateChanged(user => {
     const name_area = window.document.getElementById("nome")
     name_area.innerHTML = user.email
   } else {
-    console.log("login não feito")
   buttonlogin.style.display = "flex";
   use.style.display = "none";
   }
