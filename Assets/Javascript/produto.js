@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 function onUserStateChanged(callback) {
   onAuthStateChanged(auth, callback);
 }
@@ -14,6 +15,16 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+async function getUserData(uid) {
+  const docRef = doc(db, "usuarios", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data(); 
+  } else {
+    return null;
+  }
+}
 const arquivo_json = [
   {
     "marca": "Vonixx",
@@ -345,11 +356,12 @@ botao_pedido.addEventListener("click", function() {
 })
 const finalizar_pedido = window.document.getElementById("finaliza-pedido")
 finalizar_pedido.addEventListener("click", function() {
- onUserStateChanged(user => {
+ onUserStateChanged(async user => {
   const valor_rua = window.document.getElementById("rua").value
   if (user) {
+    const userData = await getUserData(user.uid);
     if(user.rua != "") {
-      valor_rua.value = user.rua
+      valor_rua.value = userData.rua
     }
  const formas_de_pagamento = window.document.getElementById("right-centro-pedido")
   const carro = window.document.getElementById("carro").value
