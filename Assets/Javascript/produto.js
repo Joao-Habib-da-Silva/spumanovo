@@ -327,7 +327,6 @@ botao_pedido.addEventListener("click", function() {
   area_pedido.style.display = "block"
   forapedido.style.display = "block"
 })
-const carro = window.document.getElementById("carro")
 const finalizar_pedido = window.document.getElementById("finaliza-pedido")
 finalizar_pedido.addEventListener("click", function() {
   const valor_rua = window.document.getElementById("rua").value
@@ -339,18 +338,49 @@ finalizar_pedido.addEventListener("click", function() {
     window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
   }
 })
-carro.addEventListener("input", async function() {
-  try {
-    const carro_array = carro.value.split(" ")
-    
-    console.log(carro_array)
-    const api = await fetch(`https://carapi.app/api/models?year=${year}&make=${make}&model=${model}`)
-    if(!api.ok) {
-      throw new Error("erro")
-    }
-  }
-  catch(error) { 
-    console.error("Erro" + error)
 
+const carro = document.getElementById("carro");
+var tamanho;
+carro.addEventListener("input", function() {
+  try {
+    const carro_array = carro.value.split(" ");
+    const make = carro_array[0];
+    const model = carro_array[1];
+    const year = carro_array[2];
+    console.log("Palavras detectadas:", carro_array);
+    if (!make || !model || !year) {
+      console.warn("Digite: fabricante modelo ano (ex: toyota corolla 2020)");
+      return;
+    }
+    const callbackName = "carQueryCallback_" + Date.now();
+    window[callbackName] = function(data) {
+      if (!data.Trims || data.Trims.length === 0) {
+        console.warn("Nenhum dado encontrado para esse carro.");
+      } else {
+        const peso = data["Trims"][0]["model_weight_kg"]
+        const comprimento = data["Trims"][0]["model_length_mm"] / 100
+        const passageiros = data["Trims"][0]["model_seats"]
+        if(peso <= 1500 && comprimento < 4.20 && passageiros <= 5) {
+          tamanho = "Pequeno"
+        }
+        else if (peso > 1501 && peso <= 2500 && comprimento >= 4.2 && comprimento <= 4.7 && passageiros >= 5 && passageiros <= 7) {
+          tamanho = "Médio"
+        }
+        else {
+          tamanho = "Grande"
+        }
+
+      }
+      document.body.removeChild(script);
+      delete window[callbackName];
+    };
+    const script = document.createElement("script");
+    script.src = `https://www.carqueryapi.com/api/0.3/?callback=${callbackName}&cmd=getTrims&make=${make}&model=${model}&year=${year}`;
+    document.body.appendChild(script);
+
+  } catch (error) {
+    console.error("Erro:", error);
   }
-})
+});
+const primeiro_botao = window.document.getElementById("primeirobotao")
+const segundo_botao = window.document.getElementById("segundobotao")
