@@ -43,6 +43,11 @@
   transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
   text-transform: uppercase;
 }
+#valor {
+  margin-top: -40px;
+  margin-right: 25px;
+  font-family: "roboto";
+}
 #area-pedido button {
   border: none;
   color: var(--light);

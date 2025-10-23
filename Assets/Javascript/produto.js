@@ -338,8 +338,8 @@ finalizar_pedido.addEventListener("click", function() {
     window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
   }
 })
-
 const carro = document.getElementById("carro");
+carro.value = ""
 var tamanho;
 carro.addEventListener("input", function() {
   try {
@@ -356,20 +356,19 @@ carro.addEventListener("input", function() {
     window[callbackName] = function(data) {
       if (!data.Trims || data.Trims.length === 0) {
         console.warn("Nenhum dado encontrado para esse carro.");
+        tamanho = "Indefinido"; 
       } else {
-        const peso = data["Trims"][0]["model_weight_kg"]
-        const comprimento = data["Trims"][0]["model_length_mm"] / 100
-        const passageiros = data["Trims"][0]["model_seats"]
-        if(peso <= 1500 && comprimento < 4.20 && passageiros <= 5) {
-          tamanho = "Pequeno"
+        const peso = parseInt(data["Trims"][0]["model_weight_kg"], 10);
+        const comprimento = data["Trims"][0]["model_length_mm"] / 1000;
+        if (peso <= 1500 && comprimento < 4.20) {
+          tamanho = "Pequeno";
+        } else if (peso <= 2500 && comprimento <= 4.70) {
+          tamanho = "Medio";
+        } else if (comprimento > 4.7) {
+          tamanho = "Grande";
+        } else {
+          tamanho = "Indefinido";
         }
-        else if (peso > 1501 && peso <= 2500 && comprimento >= 4.2 && comprimento <= 4.7 && passageiros >= 5 && passageiros <= 7) {
-          tamanho = "Médio"
-        }
-        else {
-          tamanho = "Grande"
-        }
-
       }
       document.body.removeChild(script);
       delete window[callbackName];
@@ -377,10 +376,63 @@ carro.addEventListener("input", function() {
     const script = document.createElement("script");
     script.src = `https://www.carqueryapi.com/api/0.3/?callback=${callbackName}&cmd=getTrims&make=${make}&model=${model}&year=${year}`;
     document.body.appendChild(script);
-
   } catch (error) {
     console.error("Erro:", error);
   }
 });
-const primeiro_botao = window.document.getElementById("primeirobotao")
-const segundo_botao = window.document.getElementById("segundobotao")
+const primeiro_botao = document.getElementById("primeirobotao");
+primeiro_botao.checked = false
+const segundo_botao = document.getElementById("segundobotao");
+segundo_botao.checked = false
+const valor = document.getElementById("valor");
+var preco;
+primeiro_botao.addEventListener("click", function() {
+  if (tamanho === "Pequeno") {
+    preco = 80;
+  } else if (tamanho === "Medio") {
+    preco = 90;
+  } else if (tamanho === "Grande") {
+    preco = 100;
+  } else {
+    preco = "não sei";
+  }
+  valor.innerHTML = `R$ ${preco}`;
+});
+segundo_botao.addEventListener("click", function() {
+   if (tamanho === "Pequeno") {
+    preco = 150;
+  } else if (tamanho === "Medio") {
+    preco = 170;
+  } else if (tamanho === "Grande") {
+    preco = 190;
+  } else {
+    preco = "não sei";
+  }
+  valor.innerHTML = `R$ ${preco}`
+})
+var  j = 1
+var cera = window.document.getElementById("aplicacao-cera")
+ cera.checked = false
+cera.addEventListener("click", function() {
+  if(j % 2 != 0) {
+    preco += 20 
+  }
+  else {
+    preco -= 20
+  }
+  valor.innerHTML = `R$ ${preco}`
+  j +=1
+})
+var revitalizar = window.document.getElementById("plasticos")
+revitalizar.checked = false
+var k = 1
+revitalizar.addEventListener("click", function() {
+  if(k % 2 != 0) {
+    preco += 20
+  }
+  else {
+    preco -= 20
+  }
+  valor.innerHTML = `R$ ${preco}`
+  k +=1
+})
