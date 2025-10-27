@@ -1,3 +1,22 @@
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getFirestore,addDoc, collection} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
+  authDomain: "spuma-banco.firebaseapp.com",
+  projectId: "spuma-banco",
+  storageBucket: "spuma-banco.appspot.com",
+  messagingSenderId: "447336546434",
+  appId: "1:447336546434:web:23802d28de45fbedc2349b",
+  measurementId: "G-4BJ95WYKF5",
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore();
+function onUserStateChanged(callback) {
+  onAuthStateChanged(auth, callback);
+}
+
 const arquivo_json = [
   {
     "marca": "Vonixx",
@@ -328,16 +347,6 @@ botao_pedido.addEventListener("click", function() {
   forapedido.style.display = "block"
 })
 const finalizar_pedido = window.document.getElementById("finaliza-pedido")
-finalizar_pedido.addEventListener("click", function() {
-  const valor_rua = window.document.getElementById("rua").value
- const formas_de_pagamento = window.document.getElementById("right-centro-pedido")
-  const aviso = window.document.getElementById("aviso")
-  if(!valor_rua || !carro){
-    aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!"
-  } else {
-    window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
-  }
-})
 const carro = document.getElementById("carro");
 carro.value = ""
 var tamanho;
@@ -381,8 +390,9 @@ carro.addEventListener("input", function() {
   }
 });
 const primeiro_botao = document.getElementById("primeirobotao");
-primeiro_botao.checked = false
 const segundo_botao = document.getElementById("segundobotao");
+
+primeiro_botao.checked = false
 segundo_botao.checked = false
 const valor = document.getElementById("valor");
 var preco;
@@ -406,7 +416,7 @@ segundo_botao.addEventListener("click", function() {
   } else if (tamanho === "Grande") {
     preco = 190;
   } else {
-    preco = "não sei";
+    preco = 50;
   }
   valor.innerHTML = `R$ ${preco}`
 })
@@ -435,4 +445,39 @@ revitalizar.addEventListener("click", function() {
   }
   valor.innerHTML = `R$ ${preco}`
   k +=1
+})
+finalizar_pedido.addEventListener("click", function() {
+  const valor_rua = window.document.getElementById("rua").value
+  const aviso = window.document.getElementById("aviso")
+  if(!valor_rua || !carro){
+    aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!"
+  }
+  onUserStateChanged(async (user) => {
+    if(user) {
+      try {
+        const valor_carro = carro.value
+        const primeirobotao_value = primeiro_botao.checked
+        const segundobotao_value = segundo_botao.checked
+        const  cera = window.document.getElementById("aplicacao-cera").checked
+        const plastico = window.document.getElementById("plasticos").checked
+        const docref = await addDoc(collection(db, "pedidos"), {
+          cliente:user.uid,
+          cliente_email: user.email,
+          carro: valor_carro,
+          tamanho: tamanho,
+          preco: preco,
+          plano_simples: primeirobotao_value,
+          plano_detalhado: segundobotao_value,
+          cera: cera,
+          plastico: plastico,
+          criado: new Date().toISOString()
+        })
+      }catch(error) {
+        console.error(`Erro na ${error}`)
+      }
+    }
+    else {
+      window.location.href="https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
+    }
+  })
 })
