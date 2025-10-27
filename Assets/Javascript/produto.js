@@ -435,6 +435,7 @@ segundo_botao.addEventListener("change", function() {
   }
 });
 const cera = window.document.getElementById("aplicacao-cera");
+cera.checked = false
 cera.addEventListener("change", function() {
   if (cera.checked) {
     preco += 20;
@@ -445,6 +446,7 @@ cera.addEventListener("change", function() {
 });
 
 const revitalizar = window.document.getElementById("plasticos");
+revitalizar.checked = false
 revitalizar.addEventListener("change", function() {
   if (revitalizar.checked) {
     preco += 20;

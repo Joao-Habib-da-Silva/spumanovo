@@ -211,11 +211,26 @@ header img {
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
+    justify-content: center;
+}
+#pedido {
+    background-color: var(--light);
+    border: none;
+    font-weight: 600;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    font-size:1.5rem;
+    color: var(--dark);
+    border-radius: 50%;
+    transform:translateY(-40px);
 }
 #menu-for-phones a {
     display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
     align-items: center;
-    border-radius: 50%;
     justify-content: center;
     width: 20%;
     height: 100%;
@@ -325,6 +340,7 @@ header img {
     }
     #login-botao {
         display: flex;
+        margin-left: 50px;
 
     }
     header.start nav {

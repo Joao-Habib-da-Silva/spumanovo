@@ -219,3 +219,23 @@ a {
 a:hover, #esqueci:hover {
     color: var(--light);
 }
+@media (max-width:1500px) {
+    #container {
+        justify-content: center;
+    }
+    #email, .senha-detalhes, #nome-cadastro, #telefone{
+        width: 99%;
+    }
+    #volte {
+    display: none;
+    }
+    #modo-dark-and-light {
+        display: none;
+    }
+}
+@media (min-width:200px) and (max-width: 1200px) {
+    #cadastro {
+        width: 90%;
+        margin-left: 0px;
+    }
+}
