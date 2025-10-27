@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getFirestore,addDoc, collection} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
   authDomain: "spuma-banco.firebaseapp.com",
@@ -10,13 +11,14 @@ const firebaseConfig = {
   appId: "1:447336546434:web:23802d28de45fbedc2349b",
   measurementId: "G-4BJ95WYKF5",
 };
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore();
+
 function onUserStateChanged(callback) {
   onAuthStateChanged(auth, callback);
 }
-
 const arquivo_json = [
   {
     "marca": "Vonixx",
@@ -219,12 +221,17 @@ const arquivo_json = [
 ]
 
 
+let tamanho = "Indefinido";  
+let preco = 0;  
+
 let n = 0;
 var input = window.document.getElementById("input");
 const roleta = window.document.getElementById("roleta");
 var seta_esquerda = window.document.getElementById("seta-esquerda");
 var seta_direita = window.document.getElementById("seta-direita");
-console.log(window.innerWidth)
+
+console.log(window.innerWidth);
+
 input.addEventListener("input", function () {
   const products = document.querySelectorAll(".products"); 
   if (input.value != "") {
@@ -248,33 +255,33 @@ input.addEventListener("input", function () {
 var seletor = window.document.getElementById("seletor-de-marcas");
 seletor.addEventListener("change", function () {
   const products = document.querySelectorAll(".products");
-  if(seletor.value == "todos") {
+  if (seletor.value == "todos") {
     products.forEach((product) => {
-      product.style.display = "block"
-    })
-  }
-  else {
-  products.forEach((product) => {
-    if (
-      (input.value.toLowerCase() == "" &&
-        product.id.toLowerCase().includes(seletor.value.toLowerCase())) ||
-      (input.value.toLowerCase() != "" &&
-        product.id.toLowerCase().includes(seletor.value.toLowerCase()) &&
-        product.id.toLowerCase().includes(input.value.toLowerCase()))
-    ) {
       product.style.display = "block";
-      roleta.style.transform = `translateX(0px)`;
-    } else {
-      product.style.display = "none";
-    }
-  });}
+    });
+  } else {
+    products.forEach((product) => {
+      if (
+        (input.value.toLowerCase() == "" &&
+          product.id.toLowerCase().includes(seletor.value.toLowerCase())) ||
+        (input.value.toLowerCase() != "" &&
+          product.id.toLowerCase().includes(seletor.value.toLowerCase()) &&
+          product.id.toLowerCase().includes(input.value.toLowerCase()))
+      ) {
+        product.style.display = "block";
+        roleta.style.transform = `translateX(0px)`;
+      } else {
+        product.style.display = "none";
+      }
+    });
+  }
 });
 
 seta_direita.addEventListener("click", function () {
   n += 1;
-  let roletorgrau = 82.5
-  if(window.innerWidth > 1600) {
-    roletorgrau= 66
+  let roletorgrau = 82.5;
+  if (window.innerWidth > 1600) {
+    roletorgrau = 66;
   }
   if (n > 0) {
     seta_esquerda.classList.add("opacidade");
@@ -302,6 +309,7 @@ seta_esquerda.addEventListener("click", function () {
   }
   console.log(n);
 });
+
 arquivo_json.forEach((produto) => {
   const divs = window.document.createElement("div");
   divs.classList.add("products");
@@ -330,26 +338,30 @@ arquivo_json.forEach((produto) => {
     `;
   roleta.appendChild(divs);
 });
-const area_pedido = window.document.getElementById("pedido")
-const forapedido = window.document.getElementById("forapedido")
+
+const area_pedido = window.document.getElementById("pedido");
+const forapedido = window.document.getElementById("forapedido");
 forapedido.addEventListener("click", function() {
-  forapedido.style.display = "none"
-  area_pedido.style.display = "none"
-})
-const botao_sair_pedido = window.document.getElementById("sair-botao")
+  forapedido.style.display = "none";
+  area_pedido.style.display = "none";
+});
+
+const botao_sair_pedido = window.document.getElementById("sair-botao");
 botao_sair_pedido.addEventListener("click", function () {
-  forapedido.style.display = "none"
-  area_pedido.style.display = "none"
-})
-const botao_pedido = window.document.getElementById("criar-pedido")
+  forapedido.style.display = "none";
+  area_pedido.style.display = "none";
+});
+
+const botao_pedido = window.document.getElementById("criar-pedido");
 botao_pedido.addEventListener("click", function() {
-  area_pedido.style.display = "block"
-  forapedido.style.display = "block"
-})
-const finalizar_pedido = window.document.getElementById("finaliza-pedido")
+  area_pedido.style.display = "block";
+  forapedido.style.display = "block";
+});
+
+const finalizar_pedido = window.document.getElementById("finaliza-pedido");
 const carro = document.getElementById("carro");
-carro.value = ""
-var tamanho;
+carro.value = "";
+
 carro.addEventListener("input", function() {
   try {
     const carro_array = carro.value.split(" ");
@@ -391,61 +403,55 @@ carro.addEventListener("input", function() {
 });
 const primeiro_botao = document.getElementById("primeirobotao");
 const segundo_botao = document.getElementById("segundobotao");
+primeiro_botao.addEventListener("change", function() { 
+  if (primeiro_botao.checked) {
+    if (tamanho === "Pequeno") {
+      preco = 80;
+    } else if (tamanho === "Medio") {
+      preco = 90;
+    } else if (tamanho === "Grande") {
+      preco = 100;
+    } else {
+      preco = 50; 
+    }
+    valor.innerHTML = `R$ ${preco}`;
+  }
+});
 
-primeiro_botao.checked = false
-segundo_botao.checked = false
-const valor = document.getElementById("valor");
-var preco;
-primeiro_botao.addEventListener("click", function() {
-  if (tamanho === "Pequeno") {
-    preco = 80;
-  } else if (tamanho === "Medio") {
-    preco = 90;
-  } else if (tamanho === "Grande") {
-    preco = 100;
+segundo_botao.addEventListener("change", function() {  
+  if (segundo_botao.checked) {
+    if (tamanho === "Pequeno") {
+      preco = 150;
+    } else if (tamanho === "Medio") {
+      preco = 170;
+    } else if (tamanho === "Grande") {
+      preco = 190;
+    } else {
+      preco = 50; 
+    }
+    valor.innerHTML = `R$ ${preco}`;
+  }
+});
+const cera = window.document.getElementById("aplicacao-cera");
+cera.addEventListener("change", function() {
+  if (cera.checked) {
+    preco += 20;
   } else {
-    preco = "50";
+    preco -= 20;
   }
   valor.innerHTML = `R$ ${preco}`;
 });
-segundo_botao.addEventListener("click", function() {
-   if (tamanho === "Pequeno") {
-    preco = 150;
-  } else if (tamanho === "Medio") {
-    preco = 170;
-  } else if (tamanho === "Grande") {
-    preco = 190;
+
+const revitalizar = window.document.getElementById("plasticos");
+revitalizar.addEventListener("change", function() {
+  if (revitalizar.checked) {
+    preco += 20;
   } else {
-    preco = 50;
+    preco -= 20;
   }
-  valor.innerHTML = `R$ ${preco}`
-})
-var  j = 1
-var cera = window.document.getElementById("aplicacao-cera")
- cera.checked = false
-cera.addEventListener("click", function() {
-  if(j % 2 != 0) {
-    preco += 20 
-  }
-  else {
-    preco -= 20
-  }
-  valor.innerHTML = `R$ ${preco}`
-  j +=1
-})
-var revitalizar = window.document.getElementById("plasticos")
-revitalizar.checked = false
-var k = 1
-revitalizar.addEventListener("click", function() {
-  if(k % 2 != 0) {
-    preco += 20
-  }
-  else {
-    preco -= 20
-  }
-  valor.innerHTML = `R$ ${preco}`
-  k +=1
-})
+  valor.innerHTML = `R$ ${preco}`;
+});
+
 let usuarioAtual = null;
 onUserStateChanged((user) => {
   usuarioAtual = user;
@@ -455,24 +461,32 @@ onUserStateChanged((user) => {
     console.log("Usuário autenticado:", user.email);
   }
 });
+
 finalizar_pedido.addEventListener("click", async function() {
   const valor_rua = window.document.getElementById("rua").value;
   const aviso = window.document.getElementById("aviso");
+  aviso.innerHTML = "";
   if (!valor_rua || !carro.value) {
-    aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!";
+    aviso.innerHTML = "Insira todos os campos";
     return;
+  }
+  if (preco === 0 || preco === undefined) {
+    aviso.innerHTML = "Selecione um dos planos para calcular";
+    return;
+  }
+  if (tamanho === "Indefinido") {
+    preco = 50;
   }
   if (!usuarioAtual) {
     window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html";
     return;
   }
-
   try {
     const valor_carro = carro.value;
     const primeirobotao_value = primeiro_botao.checked;
     const segundobotao_value = segundo_botao.checked;
-    const cera_value = document.getElementById("aplicacao-cera").checked;
-    const plastico_value = document.getElementById("plasticos").checked;
+    const cera_value = cera.checked;
+    const plastico_value = revitalizar.checked;
 
     const docRef = await addDoc(collection(db, "pedidos"), {
       cliente_uid: usuarioAtual.uid,
@@ -487,8 +501,8 @@ finalizar_pedido.addEventListener("click", async function() {
       revitalizacao_plasticos: plastico_value,
       criado_em: new Date().toISOString()
     });
+    console.log("Pedido feito!")
   } catch (error) {
     console.error("Erro ao criar pedido:", error);
-    aviso.innerHTML = "❌ Erro ao criar pedido. Verifique o console.";
   }
 });
