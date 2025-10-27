@@ -229,12 +229,3 @@ SEÇÃO 10 – JURISDIÇÃO PARA RESOLUÇÃO DE CONFLITOS
 Para a solução de controvérsias decorrentes do presente instrumento será aplicado integralmente o Direito brasileiro.
 
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.`;
-export const firebaseConfig = {
-  apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
-  authDomain: "spuma-banco.firebaseapp.com",
-  projectId: "spuma-banco",
-  storageBucket: "spuma-banco.firebasestorage.app",
-  messagingSenderId: "447336546434",
-  appId: "1:447336546434:web:23802d28de45fbedc2349b",
-  measurementId: "G-4BJ95WYKF5",
-};

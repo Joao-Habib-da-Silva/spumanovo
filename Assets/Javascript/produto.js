@@ -402,7 +402,9 @@ carro.addEventListener("input", function() {
   }
 });
 const primeiro_botao = document.getElementById("primeirobotao");
+primeiro_botao.checked = false
 const segundo_botao = document.getElementById("segundobotao");
+segundo_botao.checked = false
 primeiro_botao.addEventListener("change", function() { 
   if (primeiro_botao.checked) {
     if (tamanho === "Pequeno") {
