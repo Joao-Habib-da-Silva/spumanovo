@@ -404,7 +404,7 @@ primeiro_botao.addEventListener("click", function() {
   } else if (tamanho === "Grande") {
     preco = 100;
   } else {
-    preco = "não sei";
+    preco = "50";
   }
   valor.innerHTML = `R$ ${preco}`;
 });
@@ -446,38 +446,49 @@ revitalizar.addEventListener("click", function() {
   valor.innerHTML = `R$ ${preco}`
   k +=1
 })
-finalizar_pedido.addEventListener("click", function() {
-  const valor_rua = window.document.getElementById("rua").value
-  const aviso = window.document.getElementById("aviso")
-  if(!valor_rua || !carro){
-    aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!"
+let usuarioAtual = null;
+onUserStateChanged((user) => {
+  usuarioAtual = user;
+  if (!user) {
+    console.warn("Nenhum usuário logado no momento.");
+  } else {
+    console.log("Usuário autenticado:", user.email);
   }
-  onUserStateChanged(async (user) => {
-    if(user) {
-      try {
-        const valor_carro = carro.value
-        const primeirobotao_value = primeiro_botao.checked
-        const segundobotao_value = segundo_botao.checked
-        const  cera = window.document.getElementById("aplicacao-cera").checked
-        const plastico = window.document.getElementById("plasticos").checked
-        const docref = await addDoc(collection(db, "pedidos"), {
-          cliente:user.uid,
-          cliente_email: user.email,
-          carro: valor_carro,
-          tamanho: tamanho,
-          preco: preco,
-          plano_simples: primeirobotao_value,
-          plano_detalhado: segundobotao_value,
-          cera: cera,
-          plastico: plastico,
-          criado: new Date().toISOString()
-        })
-      }catch(error) {
-        console.error(`Erro na ${error}`)
-      }
-    }
-    else {
-      window.location.href="https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html"
-    }
-  })
-})
+});
+finalizar_pedido.addEventListener("click", async function() {
+  const valor_rua = window.document.getElementById("rua").value;
+  const aviso = window.document.getElementById("aviso");
+  if (!valor_rua || !carro.value) {
+    aviso.innerHTML = "Você não inseriu todos os campos obrigatórios!";
+    return;
+  }
+  if (!usuarioAtual) {
+    window.location.href = "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html";
+    return;
+  }
+
+  try {
+    const valor_carro = carro.value;
+    const primeirobotao_value = primeiro_botao.checked;
+    const segundobotao_value = segundo_botao.checked;
+    const cera_value = document.getElementById("aplicacao-cera").checked;
+    const plastico_value = document.getElementById("plasticos").checked;
+
+    const docRef = await addDoc(collection(db, "pedidos"), {
+      cliente_uid: usuarioAtual.uid,
+      cliente_email: usuarioAtual.email,
+      carro: valor_carro,
+      endereco: valor_rua,
+      tamanho: tamanho,
+      preco: preco,
+      plano_simples: primeirobotao_value,
+      plano_detalhado: segundobotao_value,
+      aplicacao_cera: cera_value,
+      revitalizacao_plasticos: plastico_value,
+      criado_em: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error("Erro ao criar pedido:", error);
+    aviso.innerHTML = "❌ Erro ao criar pedido. Verifique o console.";
+  }
+});
