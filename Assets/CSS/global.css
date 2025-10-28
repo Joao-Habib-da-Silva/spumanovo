@@ -381,6 +381,8 @@ header img {
 @media (min-width:200px) and (max-width: 600px) {
     #user {
         width: 100px;
+        margin-left:50px;
+
     }
     #area-user-foto {
         width: 500px;

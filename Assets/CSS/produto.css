@@ -326,7 +326,7 @@
     padding-left:20px;
     border-radius:30px 0px 0px 30px;
     font-size: 1.2rem;
-    height: 7vh;    
+    height: 7vh;
     width: 85%;
     font-family: "roboto";
     color: var(--light);
@@ -507,6 +507,12 @@ select:hover {
     left: 5vw;
     right: 5vw;
     margin: 0;
+  }
+  #seta-esquerda, #seta-direita {
+    display: none;
+  }
+  #input {
+    margin-left: -50px;
   }
   #forapedido {
     overflow-y: auto;

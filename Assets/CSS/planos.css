@@ -189,8 +189,8 @@
     padding-bottom: 20px;
     width: 100%;
     background-color: var(--light);
-    justify-content: space-between;
     margin-top: 30px;
+    justify-content: center;
     padding-bottom: 50px;
     padding-right: 25px;
     padding-left: 25px;
@@ -202,39 +202,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.plano button {
-    font-family: "roboto";
-    height: 70px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    border: 3px solid var(--dark);
-    background-color: var(--light);
-    color: var(--dark);
-    margin-bottom: 20px;
-    position: relative;
-    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    width: 200px;
-    z-index: 10;
-    border-radius: 10px;
-}
-.plano button::after {
-    width: 0px;
-    background-color: var(--dark);
-    height: 65px;
-    border-radius: 5px;
-    z-index: -1;
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-}
-.plano button:hover::after {
-    width: 197px;
-}
-.plano button:hover {
-    color: var(--light);
 }
 @media (max-width:1240px) {
     #container-inicio {
@@ -301,4 +268,8 @@
         margin-right: 15px;
     }
 
+}
+.plano {
+    width: 35%;
+    height: 90vh;
 }

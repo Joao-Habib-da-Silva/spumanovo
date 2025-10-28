@@ -273,13 +273,13 @@ seletor.addEventListener("change", function () {
 
 seta_direita.addEventListener("click", function () {
   n += 1;
-  let roletorgrau = 90;
+  let roletorgrau = 178;
   if (window.innerWidth > 1600) {
-    roletorgrau = 66;
+    roletorgrau = 70;
   }
   if (n > 0) {
     seta_esquerda.classList.add("opacidade");
-    roleta.style.transform = `translateX(${n * -roletorgrau}rem)`;
+    roleta.style.transform = `translateX(${n * -roletorgrau}vh)`;
   } else {
     roleta.style.transform += `translateX(0px)`;
     seta_direita.classList.add("desabilitado");
@@ -299,7 +299,7 @@ seta_esquerda.addEventListener("click", function () {
     if (n == 4) {
       seta_direita.classList.remove("desabilitado");
     }
-    roleta.style.transform = `translateX(${n * -90}rem)`;
+    roleta.style.transform = `translateX(${n * -roletorgrau}vh)`;
   }
   console.log(n);
 });
