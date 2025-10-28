@@ -178,6 +178,7 @@ header img {
     transition: 0.5s  cubic-bezier(0.645, 0.045, 0.355, 1.000);
     cursor: pointer;
     margin-left: 50px;
+    margin-right: 20px;
 }
 
 ::-webkit-scrollbar {

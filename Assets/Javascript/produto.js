@@ -219,19 +219,13 @@ const arquivo_json = [
     "link": ""
   }
 ]
-
-
 let tamanho = "Indefinido";  
 let preco = 0;  
-
 let n = 0;
 var input = window.document.getElementById("input");
 const roleta = window.document.getElementById("roleta");
-var seta_esquerda = window.document.getElementById("seta-esquerda");
-var seta_direita = window.document.getElementById("seta-direita");
-
-console.log(window.innerWidth);
-
+const seta_esquerda = window.document.getElementById("seta-esquerda");
+const seta_direita = window.document.getElementById("seta-direita");
 input.addEventListener("input", function () {
   const products = document.querySelectorAll(".products"); 
   if (input.value != "") {
@@ -279,7 +273,7 @@ seletor.addEventListener("change", function () {
 
 seta_direita.addEventListener("click", function () {
   n += 1;
-  let roletorgrau = 82.5;
+  let roletorgrau = 90;
   if (window.innerWidth > 1600) {
     roletorgrau = 66;
   }
@@ -305,7 +299,7 @@ seta_esquerda.addEventListener("click", function () {
     if (n == 4) {
       seta_direita.classList.remove("desabilitado");
     }
-    roleta.style.transform = `translateX(${n * -82.5}rem)`;
+    roleta.style.transform = `translateX(${n * -90}rem)`;
   }
   console.log(n);
 });
@@ -356,7 +350,6 @@ const botao_pedido = window.document.getElementById("criar-pedido");
 botao_pedido.addEventListener("click", function() {
   area_pedido.style.display = "block";
   forapedido.style.display = "flex";
-  window.document.body.classList.add("pedidoaberto")
 });
 
 const finalizar_pedido = window.document.getElementById("finaliza-pedido");

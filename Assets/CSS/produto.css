@@ -204,8 +204,8 @@
   z-index: 10000000;
   width: 90vw;
   margin: 10vh;
-  min-height: 90vh;
   border-radius: 30px;
+  height: 90vh;
   background-color: var(--dark-light);
   display: none;
   color: var(--light);
@@ -249,6 +249,7 @@
 }
 #centropedido {
   display: flex;
+  min-height: 100vh;
   font-family:"roboto";
 }
 #centropedido input[type="text"] {
@@ -448,9 +449,6 @@ select:hover {
     align-items: center;
     justify-content: center;
 }
-body.pedidoaberto {
-  overflow: hidden;
-}
 .produtos-comeco-direito button {
     border: none;
     width: 7rem;
@@ -500,10 +498,17 @@ body.pedidoaberto {
 }
 @media (min-width:200px) and (max-width:500px) {
   #pedido {
-    background-color: red;
-    width: 90%;
-    margin: 5%;
-    height: auto;
+    width: 90vw;
+    height: 80vh;
+    position: fixed;
+    overflow-y: auto;
+    top: 10vh;
+    bottom: 5vh;
+    left: 5vw;
+    right: 5vw;
+    margin: 0;
+  }
+  #forapedido {
     overflow-y: auto;
   }
 
@@ -519,7 +524,7 @@ body.pedidoaberto {
     width: 50px;
     height: 50px;
     font-size: 1rem;
-    margin-top: 20px;
+    margin-top: 30px;
   }
   #linha1, #linha2, #linha3,#linha4 {
     width: 50vw;
@@ -544,6 +549,9 @@ body.pedidoaberto {
     margin-left: 20px;
     margin-right: 20px;
   }
+  #centropedido {
+    height: 50vh;
+  }
   #aplicacoesadicionais h1:first-child {
     transform: translateX(-20px);
   }
@@ -552,17 +560,11 @@ body.pedidoaberto {
     margin-top: -20px;
   }
   #finalpedido {
-    margin: 0;
-    border: none;
-  }
-  #finalpedido button {
-    transform: translateY(-30px);
-    font-size: 0.75rem;
-    
+    height: 20vh;
   }
   #valor {
-    transform: translateY(-30px) translateX(-125px);
-    font-size: 1rem;
+    font-size: 1.25rem;
+    transform: translateX(-125px);
   } 
 }
 @media(min-width:300px) and (max-width:330px) {
