@@ -348,6 +348,9 @@ font-weight: 700;
 font-size: 1.2rem;
 font-family: "Roboto";
 }
+select option {
+  font-family: "Roboto";
+}
 select:hover {
     background-color: var(--dark);
 }
