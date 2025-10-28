@@ -131,6 +131,7 @@
   height: 100vh;
   display: none;
   left: 0;
+  overflow-y: auto;
   background-color: var(--dark);
   top: 0;
 }
@@ -203,10 +204,12 @@
   z-index: 10000000;
   width: 90vw;
   margin: 10vh;
-  height: 90vh;
+  min-height: 90vh;
   border-radius: 30px;
   background-color: var(--dark-light);
   display: none;
+  color: var(--light);
+  overflow-y: auto;
   left: 0;
   top: 0;
 }
@@ -442,6 +445,9 @@ select:hover {
     align-items: center;
     justify-content: center;
 }
+body.pedidoaberto {
+  overflow: hidden;
+}
 .produtos-comeco-direito button {
     border: none;
     width: 7rem;
@@ -488,6 +494,73 @@ select:hover {
   #roleta {
     grid-template-columns: repeat(1, 100%);
   }
+}
+@media (min-width:200px) and (max-width:500px) {
+  #pedido {
+    background-color: red;
+    width: 90%;
+    margin: 5%;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  #pedido input[type="text"] {
+    transform: translateX(-30px);
+  }
+  #cimapedido {
+    height: 5%;
+    border: none;
+  }
+  #cimapedido button {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  #linha1, #linha2, #linha3,#linha4 {
+    width: 50vw;
+    transform: translateX(-20px);
+  }
+  #linha1 h1, #linha2 h1, #linha3 h1, #linha4 h1 {
+    margin: 0;
+    width: 70%;
+  }
+  #linha1 input, #linha2 input, #linha3 input, #linha4 input {
+    margin-left: 2px;
+    margin-right: 20px;
+  }
+  .linhas-alinhamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+  }
+  #texto-e-botao h1 {
+    font-size: 2rem;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #aplicacoesadicionais h1:first-child {
+    transform: translateX(-20px);
+  }
+  #aplicacoesadicionais {
+    width: 100%;
+    margin-top: -20px;
+  }
+  #finalpedido {
+    margin: 0;
+    border: none;
+  }
+  #finalpedido button {
+    transform: translateY(-30px);
+    font-size: 0.75rem;
+    
+  }
+  #valor {
+    transform: translateY(-30px) translateX(-125px);
+    font-size: 1rem;
+  } 
 }
 @media(min-width:300px) and (max-width:330px) {
   #roleta {
@@ -549,7 +622,6 @@ select:hover {
     grid-template-columns: repeat(1, 100%);
     grid-auto-rows: 40rem;
     gap: 10px;
-    background-color: red;
   }
 }
 
@@ -568,4 +640,9 @@ select:hover {
   .products {
     scale: 0.9;
 }
+}
+@media (min-width:700px) and (max-width: 1000px) {
+  #pedido {
+    margin: 5%;
+  }
 }

@@ -355,7 +355,8 @@ botao_sair_pedido.addEventListener("click", function () {
 const botao_pedido = window.document.getElementById("criar-pedido");
 botao_pedido.addEventListener("click", function() {
   area_pedido.style.display = "block";
-  forapedido.style.display = "block";
+  forapedido.style.display = "flex";
+  window.document.body.classList.add("pedidoaberto")
 });
 
 const finalizar_pedido = window.document.getElementById("finaliza-pedido");
@@ -468,14 +469,12 @@ onUserStateChanged((user) => {
 
 finalizar_pedido.addEventListener("click", async function() {
   const valor_rua = window.document.getElementById("rua").value;
-  const aviso = window.document.getElementById("aviso");
-  aviso.innerHTML = "";
   if (!valor_rua || !carro.value) {
-    aviso.innerHTML = "Insira todos os campos";
+    console.log("Insira todos os campos")
     return;
   }
   if (preco === 0 || preco === undefined) {
-    aviso.innerHTML = "Selecione um dos planos para calcular";
+    console.log("ERRO")
     return;
   }
   if (tamanho === "Indefinido") {
