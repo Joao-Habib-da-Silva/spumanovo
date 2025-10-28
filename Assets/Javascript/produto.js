@@ -350,6 +350,7 @@ const botao_pedido = window.document.getElementById("criar-pedido");
 botao_pedido.addEventListener("click", function() {
   area_pedido.style.display = "block";
   forapedido.style.display = "flex";
+  window.document.body.classList.add("pedidoaberto")
 });
 
 const finalizar_pedido = window.document.getElementById("finaliza-pedido");

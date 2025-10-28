@@ -511,7 +511,6 @@ select:hover {
   #forapedido {
     overflow-y: auto;
   }
-
   #pedido input[type="text"] {
     transform: translateX(-30px);
   }
