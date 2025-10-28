@@ -304,7 +304,7 @@ seta_esquerda.addEventListener("click", function () {
   console.log(n);
 });
 
-arquivo_json.forEach((produto) => {
+arquivo_json.forEach(async(produto) => {
   const divs = window.document.createElement("div");
   divs.classList.add("products");
   divs.id =
