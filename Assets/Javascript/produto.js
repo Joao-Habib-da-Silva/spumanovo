@@ -505,6 +505,7 @@ finalizar_pedido.addEventListener("click", async function() {
       criado_em: new Date().toISOString()
     });
     console.log("Pedido feito!")
+    location.reload()
   } catch (error) {
     console.error("Erro ao criar pedido:", error);
   }
