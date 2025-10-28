@@ -4,6 +4,8 @@ const select_mode = window.document.getElementById("modo-dark-and-light");
 const select_mode_bolinha = window.document.getElementById("bolinha");
 const html = window.document.documentElement;
 const header = document.getElementById("header");
+const nav = window.document.getElementById("menu")
+const login = window.document.getElementById("loginoubotao")
 const menu_for_phones = document.getElementById("menu-for-phones");
 select_mode.addEventListener("click", function () {
     select_mode_bolinha.classList.toggle("ativado");
@@ -17,6 +19,8 @@ select_mode.addEventListener("click", function () {
   document.addEventListener("DOMContentLoaded", function () {
     header.classList.add("start");
     menu_for_phones.classList.add("start");
+    login.classList.add("start")
+    nav.classList.add("start")
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
       bolinha.classList.remove("ativado");

@@ -141,7 +141,11 @@ header nav {
     display: flex;
     align-items: center;
     scale: 1;
-    transition: 0.5s  cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transform: translateY(-150px);
+    transition: 0.7s  cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+header nav.start {
+    transform: translateY(0px);
 }
 header a {
     margin-right: 45px;
@@ -330,10 +334,16 @@ header img {
 #loginoubotao {
     height: 100%;
     display: flex;
+    transform: translateY(-100px);
     align-items: center;
     width: 400px;
     justify-content: center;
+    transition: 0.9s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
+#loginoubotao.start {
+    transform: translateY(0px);
+}
+
 @media (min-width:0px) and (max-width:1240px) {
     #menu-for-phones.start {
         opacity: 1;

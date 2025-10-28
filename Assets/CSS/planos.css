@@ -17,11 +17,11 @@
     border-radius: 50px;
     opacity: 0;
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    transform: translateY(50px);
+    transform: translateX(-150px);
 }
 #motor.start {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateX(0px);
 }
 #container-sobre {
     width: 50%;
