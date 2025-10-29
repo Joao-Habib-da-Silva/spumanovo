@@ -219,7 +219,7 @@ header img {
     position: relative;
     justify-content: center;
 }
-#pedido {
+#pedido-botao {
     background-color: var(--light);
     border: none;
     font-weight: 600;
