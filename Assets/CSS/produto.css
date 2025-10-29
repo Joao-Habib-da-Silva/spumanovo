@@ -108,8 +108,11 @@
     display: flex;
     overflow: hidden;
     padding-left: 100px;
-    transform: translateX(0px);
+    transform: translateX(-130px);
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
+}
+#roleta.start {
+  transform: translateX(0px);
 }
 #lupa {
     background-color: var(--dark-light);
@@ -349,6 +352,7 @@ font-weight: 700;
 font-size: 1.2rem;
 font-family: "Roboto";
 }
+
 select option {
   font-family: "Roboto";
 }

@@ -1,7 +1,10 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-
+const roleta = window.document.getElementById("roleta")
+window.addEventListener("DOMContentLoaded", function() {
+  roleta.classList.add("start")
+})
 const firebaseConfig = {
   apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
   authDomain: "spuma-banco.firebaseapp.com",
@@ -223,7 +226,6 @@ let tamanho = "Indefinido";
 let preco = 0;  
 let n = 0;
 var input = window.document.getElementById("input");
-const roleta = window.document.getElementById("roleta");
 const seta_esquerda = window.document.getElementById("seta-esquerda");
 const seta_direita = window.document.getElementById("seta-direita");
 input.addEventListener("input", function () {
@@ -347,7 +349,7 @@ botao_sair_pedido.addEventListener("click", function () {
 });
 
 const botao_pedido = window.document.getElementById("criar-pedido");
-botao_pedido.addEventListener("click", function() {
+botao_pedido.addEventListener("click", function pedir() {
   area_pedido.style.display = "block";
   forapedido.style.display = "flex";
   window.document.body.classList.add("pedidoaberto")
@@ -461,7 +463,7 @@ onUserStateChanged((user) => {
   }
 });
 
-finalizar_pedido.addEventListener("click", async function() {
+finalizar_pedido.addEventListener("click", async function () {
   const valor_rua = window.document.getElementById("rua").value;
   if (!valor_rua || !carro.value) {
     console.log("Insira todos os campos")
