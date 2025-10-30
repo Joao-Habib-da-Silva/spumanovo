@@ -3,7 +3,7 @@
     width: 100%;
     font-family: "roboto";
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 #container-oque-esquerda {
     width: 50%;
@@ -50,4 +50,18 @@
     border-bottom:6px solid var(--dark) ;
     border-radius: 10px 10px 0px 0px;
     height: 50%;
+}
+@media(max-width:800px) {
+    #container-oque {
+        display: block
+    ;}
+    #container-oque-esquerda {
+        width: 100%;
+        margin-top: 50px;
+    }
+    #container-oque-direita {
+        width: 100%;
+        text-align: center;
+        padding-top: 50px;
+    }
 }
