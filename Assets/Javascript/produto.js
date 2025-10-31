@@ -498,6 +498,7 @@ finalizar_pedido.addEventListener("click", async function () {
       plano_detalhado: segundobotao_value,
       aplicacao_cera: cera_value,
       revitalizacao_plasticos: plastico_value,
+      execucao_feita: false,
       criado_em: new Date().toISOString()
     });
     console.log("Pedido feito!")
