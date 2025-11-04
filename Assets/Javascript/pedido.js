@@ -72,18 +72,7 @@ pedido_botao.addEventListener("click", function () {
 });
 const quero = window.document.getElementById("quero-comecar")
 quero.addEventListener("click", function() {
-    onUserStateChanged((user) => {
-        if(user) {
-            const check = window.document.getElementById("formulario")
-            if (!check.checked) {
-                const aviso = window.document.getElementById("aviso")
-                aviso.innerHTML = "Preencha o formulário por favor!"
-            }
-        }
-        else {
-            location.href = "./login.html"
-        }
-    })
+    console.log("oi")
 })
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
