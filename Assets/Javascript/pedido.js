@@ -77,6 +77,18 @@ analisar.addEventListener("click",  async function() {
         let achou = false;
         querySnapshot.forEach((doc) => {
             const datas = doc.data()
-            console.log(datas)
+            var div = window.document.createElement("div")
+            div.classList.add("pedidoslista")
+            div.innerHTML= `
+            <div id="esquerda-pedido">
+            <h1>${datas.carro}</h1>
+            <p>Preço: R$ ${datas.preco}</p>
+            </div>
+            <div id="direita-pedido">
+            <button id="realizar">Realizar pedido</button>
+            </div>
+            `
+            window.document.getElementById("lista").appendChild(div)
         })
-})
+
+    })
