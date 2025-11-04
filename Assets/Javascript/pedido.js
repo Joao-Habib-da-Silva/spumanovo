@@ -73,7 +73,7 @@ pedido_botao.addEventListener("click", function () {
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click",  async function() {
-
+        const input_rua_value = input_rua.value
         const querySnapshot = await getDocs(collection(db, "pedidos"));
         let achou = false;
         querySnapshot.forEach((doc) => {
@@ -103,7 +103,7 @@ analisar.addEventListener("click",  async function() {
             div.classList.add("pedidoslista")
             div.innerHTML= `
             <div class="esquerda-pedido">
-            <h1>${datas.carro}</h1>
+            <h1>${datas.carro}, ${datas. endereco}</h1>
             <p class="preco">Preço: R$ ${datas.preco}</p>
             <div class="detalhes">
             <p>${plano} ${adicional_1} ${adicional_2}</p>
@@ -113,6 +113,12 @@ analisar.addEventListener("click",  async function() {
             <button class="realizar">Realizar pedido</button>
             </div>
             `
+            if(datas.endereco.includes(input_rua_value)) {
+              div.style.display = "flex"
+            }
+            else {
+              div.style.display = "none"
+            }
             window.document.getElementById("lista").appendChild(div)
         })
 
