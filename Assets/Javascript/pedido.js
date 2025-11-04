@@ -70,6 +70,14 @@ pedido_botao.addEventListener("click", function () {
   const pedidosdiv = window.document.getElementById("area-pedido");
   location.href = "./produto.html#area-pedido";
 });
+async function achar(endereco, bairro, rua, regiao) {
+  try {
+    const response = await fetch(``)
+  }catch(error) {
+    console.error(error)
+  }
+
+}
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click",  async function() {
@@ -81,6 +89,8 @@ analisar.addEventListener("click",  async function() {
             let adicional_1 = ""
             let adicional_2 = ""
             const datas = doc.data()
+            const enderecos = datas.endereco
+
             if (!datas.plano_detalhado) {
                 plano = "Lavagem Simples"
                 if(!datas.revitalizacao_plasticos) {
