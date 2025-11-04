@@ -73,19 +73,30 @@ pedido_botao.addEventListener("click", function () {
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click",  async function() {
+
         const querySnapshot = await getDocs(collection(db, "pedidos"));
         let achou = false;
         querySnapshot.forEach((doc) => {
+            let plano = ""
             const datas = doc.data()
+            if (!datas.plano_detalhado) {
+                plano = "Lavagem Simples"
+            }
+            else {
+                plano = "Lavagem Detalhada"
+            }
             var div = window.document.createElement("div")
             div.classList.add("pedidoslista")
             div.innerHTML= `
-            <div id="esquerda-pedido">
+            <div class="esquerda-pedido">
             <h1>${datas.carro}</h1>
-            <p>Preço: R$ ${datas.preco}</p>
+            <p class="preco">Preço: R$ ${datas.preco}</p>
+            <div class="detalhes">
+            <p>${plano}</p>
             </div>
-            <div id="direita-pedido">
-            <button id="realizar">Realizar pedido</button>
+            </div>
+            <div class="direita-pedido">
+            <button class="realizar">Realizar pedido</button>
             </div>
             `
             window.document.getElementById("lista").appendChild(div)

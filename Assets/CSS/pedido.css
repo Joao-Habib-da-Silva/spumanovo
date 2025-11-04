@@ -126,7 +126,7 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     background-color: var(--light);
 }
-#pedidoslista {
+.pedidoslista {
     width: 95%;
     background-color: var(--dark-light);
     margin-left: 35px;
@@ -136,14 +136,14 @@ input[type="checkbox"]:checked {
     height: 30vh;
     border-radius: 20px;
 }
-#esquerda-pedido {
+.esquerda-pedido {
     font-family: "Roboto";
     width: 50%;
     padding: 10px;
     height: 100%;
     border-radius: 10px 0px 0px 10px;
 }
-#direita-pedido {
+.direita-pedido {
     border-radius: 0px 10px 10px 0px;
     width: 50%;
     display: flex;
@@ -153,7 +153,7 @@ input[type="checkbox"]:checked {
     padding-right: 20px;
     padding-bottom: 20px;
 }
-#realizar {
+.realizar {
     border: 2px solid var(--light);
     background-color: var(--light-dark);
     width: 150px;
@@ -161,7 +161,20 @@ input[type="checkbox"]:checked {
     border-radius: 10px;
                 transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
-#realizar:hover {
+.realizar:hover {
     color: var(--light);
     background-color: var(--dark);
+}
+.esquerda-pedido p {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.esquerda-pedido h1 {
+    margin-top: 20px;
+    margin-left: 20px;
 }
