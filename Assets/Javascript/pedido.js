@@ -70,10 +70,6 @@ pedido_botao.addEventListener("click", function () {
   const pedidosdiv = window.document.getElementById("area-pedido");
   location.href = "./produto.html#area-pedido";
 });
-const quero = window.document.getElementById("quero-comecar")
-quero.addEventListener("click", function() {
-    console.log("oi")
-})
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click",  async function() {
