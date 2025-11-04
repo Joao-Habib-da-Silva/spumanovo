@@ -39,19 +39,19 @@ async function criarDocumentoUsuario(user, tipo = "google") {
         console.error("Erro ao criar documento:", error);
     }
 }
-botao.addEventListener("click", async function logar() {
-    try {
-        const email = window.document.getElementById("email").value
-        const senha = window.document.getElementById("senhas").value
-        const cred = await signInWithEmailAndPassword(auth, email, senha)
-        const avisa = window.document.getElementById("aviso")
-        console.log("user cadastrado")
-        history.back()
-      }catch(error) {
-        console.error(error)
-        
-        }
-})
+async function logar() {
+  try {
+    const email = window.document.getElementById("email").value;
+    const senha = window.document.getElementById("senhas").value;
+    const cred = await signInWithEmailAndPassword(auth, email, senha);
+    const avisa = window.document.getElementById("aviso");
+    console.log("user cadastrado");
+    history.back();
+  } catch (error) {
+    console.error(error);
+  }
+}
+botao.addEventListener("click", logar())
 window.document.addEventListener("keydown", (event) => {
   if(event.key == "Enter") {
     logar()

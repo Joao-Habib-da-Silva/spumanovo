@@ -14,27 +14,44 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const cadastroligar = document.getElementById("button-enviar");
-cadastroligar.addEventListener("click", async function cadastrar() {
+async function cadastrar() {
   const email = document.getElementById("email").value;
   const nome = window.document.getElementById("nome-cadastro").value;
   const senha = document.getElementById("senha1").value;
   const data = document.getElementById("idade").value;
   const cep = window.document.getElementById("cep").value;
-  const telefone = window.document.getElementById("telefone").value
+  const telefone = window.document.getElementById("telefone").value;
   const rua = window.document.getElementById("rua").value;
   const bairro = window.document.getElementById("bairro").value;
   const cidade = window.document.getElementById("cidade").value;
   const estado = window.document.getElementById("estado").value;
-  const check_politicas = window.document.getElementById("check-politicas")
-  const check_diretrizes = window.document.getElementById("check-termos")
-  const aviso = window.document.getElementById("aviso")
-  if (!nome ||!email || !senha || !data || !cep || !rua || !bairro || !cidade || !estado || !telefone || !check_politicas.checked || !check_diretrizes.checked) {
-    aviso.style.display = "block"
-    aviso.innerHTML = "<h1>Preencha todos os campos</h1>"
+  const check_politicas = window.document.getElementById("check-politicas");
+  const check_diretrizes = window.document.getElementById("check-termos");
+  const aviso = window.document.getElementById("aviso");
+  if (
+    !nome ||
+    !email ||
+    !senha ||
+    !data ||
+    !cep ||
+    !rua ||
+    !bairro ||
+    !cidade ||
+    !estado ||
+    !telefone ||
+    !check_politicas.checked ||
+    !check_diretrizes.checked
+  ) {
+    aviso.style.display = "block";
+    aviso.innerHTML = "<h1>Preencha todos os campos</h1>";
     return;
   }
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      senha
+    );
     const user = userCredential.user;
 
     await setDoc(doc(db, "users", user.uid), {
@@ -50,13 +67,14 @@ cadastroligar.addEventListener("click", async function cadastrar() {
       estado: estado,
       tipo: "cliente",
     });
-    aviso.style.display = "block"
-    aviso.innerHTML = "<h1>Cadastrado com sucesso</h1>"
-    history.back()
+    aviso.style.display = "block";
+    aviso.innerHTML = "<h1>Cadastrado com sucesso</h1>";
+    history.back();
   } catch (error) {
     console.error("Erro ao cadastrar:", error.message);
   }
-});
+}
+cadastroligar.addEventListener("click", cadastrar());
 window.document.addEventListener("keydown", (event) => {
   if(event.key == "Enter"){
     cadastrar()
