@@ -82,14 +82,14 @@ async function achar(endereco, bairro, rua, regiao) {
 async function realizarPedido(id) {
   const pedidoRef = doc(db, "pedidos", id);
   await updateDoc(pedidoRef, {
-    status: "em andamento" 
+    execucao_feita: true 
   });
   alert("Pedido atualizado com sucesso!");
 }
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click", async function () {
-  const input_rua_value = input_rua.value;
+  const input_rua_value = input_rua.value.toLowerCase();
   const querySnapshot = await getDocs(collection(db, "pedidos"));
   const lista = window.document.getElementById("lista");
   lista.innerHTML = ""; 

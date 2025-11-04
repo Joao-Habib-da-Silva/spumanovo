@@ -492,7 +492,7 @@ finalizar_pedido.addEventListener("click", async function () {
       cliente_email: usuarioAtual.email,
       carro: valor_carro,
       telefone_do_cliente: telefone_value,
-      endereco: valor_rua,
+      endereco: valor_rua.toLowerCase(),
       tamanho: tamanho,
       preco: preco,
       plano_simples: primeiro_botao.value,
