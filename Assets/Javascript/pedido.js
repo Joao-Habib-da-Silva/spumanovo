@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {getFirestore, collection, getDocs
+import {getFirestore, collection, getDocs, doc, uptadeDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import {
   getAuth,
@@ -78,62 +78,71 @@ async function achar(endereco, bairro, rua, regiao) {
   }
 
 }
+
+async function realizarPedido(id) {
+  const pedidoRef = doc(db, "pedidos", id);
+  await updateDoc(pedidoRef, {
+    status: "em andamento" 
+  });
+  alert("Pedido atualizado com sucesso!");
+}
 const input_rua = window.document.getElementById("pedidos")
 const analisar = window.document.getElementById("analisar")
-analisar.addEventListener("click",  async function() {
-        const input_rua_value = input_rua.value
-        const querySnapshot = await getDocs(collection(db, "pedidos"));
-        let achou = false;
-        querySnapshot.forEach((doc) => {
-            let plano = ""
-            let adicional_1 = ""
-            let adicional_2 = ""
-            const datas = doc.data()
-            const enderecos = datas.endereco
+analisar.addEventListener("click", async function () {
+  const input_rua_value = input_rua.value;
+  const querySnapshot = await getDocs(collection(db, "pedidos"));
+  const lista = window.document.getElementById("lista");
+  lista.innerHTML = ""; 
 
-            if (!datas.plano_detalhado) {
-                plano = "Lavagem Simples"
-                if(!datas.revitalizacao_plasticos) {
-                    adicional_1 = ", Sem revitalização"
-                }
-                else {
-                    adicional_1 = ", Com revitalização"
-                }
-                if (!datas.aplicacao_cera) {
-                    adicional_2 = ", Sem aplicação de cera"
-                }
-                else {
-                    adicional_2 = ", Com aplicação de cera"
-                }
-            }
-            else {
-                plano = "Lavagem Detalhada"
-            }
-            var div = window.document.createElement("div")
-            div.classList.add("pedidoslista")
-            div.innerHTML= `
-            <div class="esquerda-pedido">
-            <h1>${datas.carro}, ${datas. endereco}</h1>
-            <p class="preco">Preço: R$ ${datas.preco}</p>
-            <div class="detalhes">
-            <p>${plano} ${adicional_1} ${adicional_2}</p>
-            </div>
-            </div>
-            <div class="direita-pedido">
-            <button class="realizar">Realizar pedido</button>
-            </div>
-            `
-            if(datas.endereco.includes(input_rua_value)) {
-              div.style.display = "flex"
-            }
-            else {
-              div.style.display = "none"
-            }
-            window.document.getElementById("lista").appendChild(div)
-        })
+  querySnapshot.forEach((docSnap) => {
+    const datas = docSnap.data();
+    const idPedido = docSnap.id; 
+    let plano = "";
+    let adicional_1 = "";
+    let adicional_2 = "";
 
-    })
-    const finalizar_realização = window.document.getElementById("realizar")
-    finalizar_realização.addEventListener("click", function() {
-        
-    })
+    const enderecos = datas.endereco;
+
+    if (!datas.plano_detalhado) {
+      plano = "Lavagem Simples";
+      adicional_1 = datas.revitalizacao_plasticos
+        ? ", Com revitalização"
+        : ", Sem revitalização";
+      adicional_2 = datas.aplicacao_cera
+        ? ", Com aplicação de cera"
+        : ", Sem aplicação de cera";
+    } else {
+      plano = "Lavagem Detalhada";
+    }
+
+    const div = document.createElement("div");
+    div.classList.add("pedidoslista");
+    div.innerHTML = `
+      <div class="esquerda-pedido">
+        <h1>${datas.carro}, ${datas.endereco}</h1>
+        <p class="preco">Preço: R$ ${datas.preco}</p>
+        <div class="detalhes">
+          <p>${plano} ${adicional_1} ${adicional_2}</p>
+        </div>
+      </div>
+      <div class="direita-pedido">
+        <button class="realizar" data-id="${idPedido}">Realizar pedido</button>
+      </div>
+    `;
+
+    if (datas.endereco.includes(input_rua_value)) {
+      div.style.display = "flex";
+    } else {
+      div.style.display = "none";
+    }
+
+    lista.appendChild(div);
+  });
+  const botoes = document.querySelectorAll(".realizar");
+  botoes.forEach((botao) => {
+    botao.addEventListener("click", async (e) => {
+      const id = e.target.dataset.id; 
+            await realizarPedido(id);
+    });
+  });
+});

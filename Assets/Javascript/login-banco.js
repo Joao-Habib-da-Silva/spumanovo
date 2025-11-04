@@ -44,22 +44,9 @@ botao.addEventListener("click", async function() {
         const email = window.document.getElementById("email").value
         const senha = window.document.getElementById("senhas").value
         const cred = await signInWithEmailAndPassword(auth, email, senha)
-        const avisa = window.document.getElementById("aviso")
-        avisa.style.display = "block"
-        avisa.innerHTML = `<p>Usuário cadastrado</p>`
         history.back()
       }catch(error) {
         console.error(error)
-        avisa.style.display = "block"
-        if (error.code === "auth/invalid-email") {
-          avisa.innerHTML = "<h1>Email inválido</h1>";
-        } else if (error.code === "auth/user-not-found") {
-          avisa.innerHTML = "<h1>Usuário não encontrado</h1>";
-        } else if (error.code === "auth/wrong-password") {
-          avisa.innerHTML = "<h1>Senha incorreta</h1>";
-        } else {
-          avisa.innerHTML = "<h1>Erro ao fazer login. Tente novamente.</h1>";
-        }  
       }
 })
 botao_google.addEventListener("click", async function() {
