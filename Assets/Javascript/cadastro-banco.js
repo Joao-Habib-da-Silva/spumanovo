@@ -14,7 +14,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const cadastroligar = document.getElementById("button-enviar");
-cadastroligar.addEventListener("click", async function () {
+cadastroligar.addEventListener("click", async function cadastrar() {
   const email = document.getElementById("email").value;
   const nome = window.document.getElementById("nome-cadastro").value;
   const senha = document.getElementById("senha1").value;
@@ -57,3 +57,7 @@ cadastroligar.addEventListener("click", async function () {
     console.error("Erro ao cadastrar:", error.message);
   }
 });
+window.document.addEventListener("keydown", (event) => {
+  if(event.key == "Enter"){
+    cadastrar()
+  }})
