@@ -103,3 +103,4 @@ analisar.addEventListener("click",  async function() {
         })
 
     })
+    const finalizar_realização = window.document.getElementById("")

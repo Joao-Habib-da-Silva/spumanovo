@@ -171,7 +171,7 @@ input[type="checkbox"]:checked {
     align-items: center;
     padding-left: 20px;
     font-size: 1.5rem;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
 }
 .esquerda-pedido h1 {

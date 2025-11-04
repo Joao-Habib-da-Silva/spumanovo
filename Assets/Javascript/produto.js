@@ -441,7 +441,7 @@ cera.addEventListener("change", function() {
   }
   valor.innerHTML = `R$ ${preco}`;
 });
-
+const telefone = window.document.getElementById("telefone")
 const revitalizar = window.document.getElementById("plasticos");
 revitalizar.checked = false
 revitalizar.addEventListener("change", function() {
@@ -485,12 +485,14 @@ finalizar_pedido.addEventListener("click", async function () {
     const primeirobotao_value = primeiro_botao.checked;
     const segundobotao_value = segundo_botao.checked;
     const cera_value = cera.checked;
+    const telefone_value = telefone.value
     const plastico_value = revitalizar.checked;
 
     const docRef = await addDoc(collection(db, "pedidos"), {
       cliente_uid: usuarioAtual.uid,
       cliente_email: usuarioAtual.email,
       carro: valor_carro,
+      telefone_do_cliente: telefone_value,
       endereco: valor_rua,
       tamanho: tamanho,
       preco: preco,

@@ -44,10 +44,12 @@ botao.addEventListener("click", async function() {
         const email = window.document.getElementById("email").value
         const senha = window.document.getElementById("senhas").value
         const cred = await signInWithEmailAndPassword(auth, email, senha)
+        const avisa = window.document.getElementById("aviso")
         console.log("user cadastrado")
         history.back()
       }catch(error) {
         console.error(error)
+        
         }
 })
 botao_google.addEventListener("click", async function() {
