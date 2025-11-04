@@ -130,7 +130,7 @@ analisar.addEventListener("click", async function () {
       </div>
     `;
 
-    if (datas.endereco.includes(input_rua_value)) {
+    if (datas.endereco.includes(input_rua_value) && !datas.execucao_feita) {
       div.style.display = "flex";
     } else {
       div.style.display = "none";
