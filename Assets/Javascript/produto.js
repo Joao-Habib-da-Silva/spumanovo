@@ -495,7 +495,7 @@ finalizar_pedido.addEventListener("click", async function () {
       endereco: valor_rua,
       tamanho: tamanho,
       preco: preco,
-      plano_simples: primeirobotao_value,
+      plano_simples: primeirobotao.checked,
       plano_detalhado: segundobotao_value,
       aplicacao_cera: cera_value,
       revitalizacao_plasticos: plastico_value,
