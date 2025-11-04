@@ -125,5 +125,5 @@ analisar.addEventListener("click",  async function() {
     })
     const finalizar_realização = window.document.getElementById("realizar")
     finalizar_realização.addEventListener("click", function() {
-        console.log("oi")
+        
     })
