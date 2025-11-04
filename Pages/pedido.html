@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#edf6f9">
-    <title>Spuma Website - Página Inicial</title>
-    <link rel="stylesheet" href="./Assets/CSS/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="theme-color" content="#edf6f9">
+
+    <title>Spuma Website - Pedidos</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="../Assets/CSS/pedido.css">
 </head>
 <body>
-    <video autoplay muted loop>
-        <source src="./Assets/videos/video_jFUm0LkU (1).mp4">
-    </video>
-    <div id="home-opacity">
-    </div>
+    
     <header id="header">
-        <img src="./Assets/IMG/logo.png" alt="">
+        <img src="../Assets/IMG/logo.png" alt="">
         <nav id="menu">
             <a href="./index.html">Página Inicial</a>
             <a href="./Pages/planos.html">Planos</a>
@@ -39,15 +36,26 @@
             </div>
         </div>
     </header>
-    <div id="home">
-    <div id="home-text">
-        <h1>Seja bem vindo ao Spuma</h1>
-        <h2>O site com o melhor conceito de estética automotiva</h2>
-        <div id="home-text-buttons">
-        <a href="#"><button>Cliente</button></a>
-        <a href="./Pages/pedido.html"><button>Profissional</button></a>    
+    <div id="container">
+        <div id="tela">
+            
+        <div id="profissional">
+            <h1>Gostaria de trabalhar com o Spuma? Siga esses passos</h1>
+            <br>
+            <div id="primeiralinha">
+            <input type="checkbox" name="" id="formulario">
+            <p>Você fez o <a href="">Formulário</a>?</p>
+            </div>
+            <div id="aviso"></div>
+            <div id="parte-de-baixo">
+            <button id="quero-começar">Quero começar!</button></div>
         </div>
-    </div>
+        </div>
+        <div id="filtrador">
+            <input type="text" placeholder="Rua:" id="pedidos">
+            <button id="analisar">Analisar</button>
+        </div>
+        <div id="lista"></div>
     </div>
     <div id="menu-for-phones">
         <nav>
@@ -59,7 +67,6 @@
         <a href="./Pages/contato.html"><i class='bx  bx-phone'></i></a> 
         </nav>
     </div>
-    <script type="module" src="./Assets/Javascript/global.js"></script>
-    <script src="./Assets/Javascript/index.js"></script>
+    <script type="module" src="../Assets/Javascript/pedido.js"></script>
 </body>
 </html>
