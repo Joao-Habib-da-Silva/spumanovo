@@ -78,9 +78,23 @@ analisar.addEventListener("click",  async function() {
         let achou = false;
         querySnapshot.forEach((doc) => {
             let plano = ""
+            let adicional_1 = ""
+            let adicional_2 = ""
             const datas = doc.data()
             if (!datas.plano_detalhado) {
                 plano = "Lavagem Simples"
+                if(!datas.revitalizacao_plasticos) {
+                    adicional_1 = ", Sem revitalização"
+                }
+                else {
+                    adicional_1 = ", Com revitalização"
+                }
+                if (!datas.aplicacao_cera) {
+                    adicional_2 = ", Sem aplicação de cera"
+                }
+                else {
+                    adicional_2 = ", Com aplicação de cera"
+                }
             }
             else {
                 plano = "Lavagem Detalhada"
@@ -92,7 +106,7 @@ analisar.addEventListener("click",  async function() {
             <h1>${datas.carro}</h1>
             <p class="preco">Preço: R$ ${datas.preco}</p>
             <div class="detalhes">
-            <p>${plano}</p>
+            <p>${plano} ${adicional_1} ${adicional_2}</p>
             </div>
             </div>
             <div class="direita-pedido">
@@ -103,4 +117,7 @@ analisar.addEventListener("click",  async function() {
         })
 
     })
-    const finalizar_realização = window.document.getElementById("")
+    const finalizar_realização = window.document.getElementById("realizar")
+    finalizar_realização.addEventListener("click", function() {
+        console.log("oi")
+    })

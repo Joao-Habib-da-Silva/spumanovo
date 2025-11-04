@@ -483,6 +483,10 @@ finalizar_pedido.addEventListener("click", async function () {
   try {
     const valor_carro = carro.value;
     const primeirobotao_value = primeiro_botao.checked;
+    if(!primeiro_botao_value) {
+      const adicionais_div = window.document.getElementById("aplicacoesadicionais")
+      adicionais_div.style.display = "none"
+    }
     const segundobotao_value = segundo_botao.checked;
     const cera_value = cera.checked;
     const telefone_value = telefone.value
