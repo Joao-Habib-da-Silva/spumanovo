@@ -75,7 +75,7 @@ const analisar = window.document.getElementById("analisar")
 analisar.addEventListener("click",  async function() {
         const querySnapshot = await getDocs(collection(db, "pedidos"));
         let achou = false;
-        querySnapshot.foreach((doc) => {
+        querySnapshot.forEach((doc) => {
             const datas = doc.data()
             console.log(datas)
         })
