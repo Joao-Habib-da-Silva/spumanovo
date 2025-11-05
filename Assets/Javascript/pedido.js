@@ -65,12 +65,27 @@ function onUserStateChanged(callback) {
   onAuthStateChanged(auth, callback);
 }
 
-onUserStateChanged((user) => {
+onUserStateChanged(async (user) => {
   if (user) {
     if (buttonlogin) buttonlogin.style.display = "none";
     if (use) use.style.display = "flex";
     const name_area = document.getElementById("nome");
     if (name_area) name_area.innerHTML = user.email;
+    try {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        const profissionalTela = document.getElementById("tela");
+
+        if (userData.tipo === "profissional" && profissionalTela) {
+          profissionalTela.style.display = "none";
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao verificar tipo de usuário:", error);
+    }
   } else {
     if (buttonlogin) buttonlogin.style.display = "flex";
     if (use) use.style.display = "none";
@@ -188,26 +203,6 @@ function marcarCheckbox() {
   }
 }
 
-function verificarEstado() {
-  const checkbox = document.getElementById("formulario");
-  const urlParams = new URLSearchParams(window.location.search);
-
-  if (urlParams.get("form") === "done") {
-    marcarCheckbox();
-    window.history.replaceState(null, null, window.location.pathname);
-  }
-
-  if (localStorage.getItem("formularioFeito") === "true") {
-    if (checkbox) checkbox.checked = true;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", verificarEstado);
-window.addEventListener("focus", verificarEstado);
-document.addEventListener("visibilitychange", function () {
-  if (!document.hidden) verificarEstado();
-});
-
 async function atualizarUsuarioParaProfissional(userId) {
   try {
     const userRef = doc(db, "users", userId);
@@ -228,6 +223,30 @@ async function atualizarUsuarioParaProfissional(userId) {
     alert("Erro ao atualizar usuário. Tente novamente.");
   }
 }
+
+function verificarEstado() {
+  const checkbox = document.getElementById("formulario");
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.get("form") === "done") {
+    marcarCheckbox();
+    const user = auth.currentUser;
+    if (user) {
+      atualizarUsuarioParaProfissional(user.uid);
+    }
+    window.history.replaceState(null, null, window.location.pathname);
+  }
+
+  if (localStorage.getItem("formularioFeito") === "true") {
+    if (checkbox) checkbox.checked = true;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", verificarEstado);
+window.addEventListener("focus", verificarEstado);
+document.addEventListener("visibilitychange", function () {
+  if (!document.hidden) verificarEstado();
+});
 
 const quero = document.getElementById("quero-comecar");
 if (quero) {
@@ -253,7 +272,6 @@ if (quero) {
       }
     } catch (error) {
       console.error("Erro no processo:", error);
-      alert("Ocorreu um erro. Tente novamente.");
     }
   });
 }
