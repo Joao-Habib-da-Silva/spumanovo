@@ -1,9 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {getFirestore, collection, getDocs, doc, updateDoc
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {getFirestore, 
+  collection, 
+  getDocs, 
+  doc, 
+  updateDoc
+} 
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import {
   getAuth,
-  onAuthStateChanged,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 const select_mode = window.document.getElementById("modo-dark-and-light");
 const select_mode_bolinha = window.document.getElementById("bolinha");
@@ -44,7 +49,6 @@ const firebaseConfig = {
   appId: "1:447336546434:web:23802d28de45fbedc2349b",
   measurementId: "G-4BJ95WYKF5",
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -53,7 +57,6 @@ const use = window.document.getElementById("user");
 function onUserStateChanged(callback) {
   onAuthStateChanged(auth, callback);
 }
-
 onUserStateChanged((user) => {
   if (user) {
     buttonlogin.style.display = "none";
@@ -70,15 +73,6 @@ pedido_botao.addEventListener("click", function () {
   const pedidosdiv = window.document.getElementById("area-pedido");
   location.href = "./produto.html#area-pedido";
 });
-async function achar(endereco, bairro, rua, regiao) {
-  try {
-    const response = await fetch(``)
-  }catch(error) {
-    console.error(error)
-  }
-
-}
-
 async function realizarPedido(id) {
   const pedidoRef = doc(db, "pedidos", id);
   await updateDoc(pedidoRef, {
@@ -93,16 +87,13 @@ analisar.addEventListener("click", async function () {
   const querySnapshot = await getDocs(collection(db, "pedidos"));
   const lista = window.document.getElementById("lista");
   lista.innerHTML = ""; 
-
   querySnapshot.forEach((docSnap) => {
     const datas = docSnap.data();
     const idPedido = docSnap.id; 
-    let plano = "";
-    let adicional_1 = "";
-    let adicional_2 = "";
-
+    let plano;
+    let adicional_1;
+    let adicional_2;
     const enderecos = datas.endereco;
-
     if (!datas.plano_detalhado) {
       plano = "Lavagem Simples";
       adicional_1 = datas.revitalizacao_plasticos
@@ -114,19 +105,19 @@ analisar.addEventListener("click", async function () {
     } else {
       plano = "Lavagem Detalhada";
     }
-
     const div = document.createElement("div");
     div.classList.add("pedidoslista");
     div.innerHTML = `
       <div class="esquerda-pedido">
         <h1>${datas.carro}, ${datas.endereco}</h1>
         <p class="preco">Preço: R$ ${datas.preco}</p>
+        <p class="telefone">Telefone: ${datas.telefone_do_cliente}</p>
         <div class="detalhes">
           <p>${plano} ${adicional_1} ${adicional_2}</p>
         </div>
       </div>
       <div class="direita-pedido">
-        <button class="realizar" data-id="${idPedido}">Realizar pedido</button>
+        <a href="https://wa.me/${datas.telefone_do_cliente}?text="><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>
       </div>
     `;
 
