@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (menu_for_phones) menu_for_phones.classList.add("start");
   if (login) login.classList.add("start");
   if (nav) nav.classList.add("start");
-  verificarEstado();
   onUserStateChanged(async (user) => {
     if (user) {
       if (buttonlogin) buttonlogin.style.display = "none";
@@ -190,14 +189,6 @@ if (analisar) {
   });
 }
 
-function marcarCheckbox() {
-  const checkbox = document.getElementById("formulario");
-  if (checkbox) {
-    checkbox.checked = true;
-  
-    localStorage.setItem("formularioFeito", "true");
-  }
-}
 
 async function atualizarUsuarioParaProfissional(userId) {
   try {
@@ -216,25 +207,5 @@ async function atualizarUsuarioParaProfissional(userId) {
   } catch (error) {
     console.error("Erro ao atualizar usuário:", error);
     alert("Erro ao atualizar usuário. Tente novamente.");
-  }
-}
-
-function verificarEstado() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const formSubmitted = urlParams.get("formSubmitted");
-  if (formSubmitted === "true") {
-    marcarCheckbox();
-    const user = auth.currentUser;
-    if (user) {
-      atualizarUsuarioParaProfissional(user.uid);
-    }
-    const newUrl = window.location.pathname;
-    window.history.replaceState({}, document.title, newUrl);
-  }
-  if (localStorage.getItem("formularioFeito") === "true") {
-    const checkbox = document.getElementById("formulario");
-    if (checkbox) {
-      checkbox.checked = true;
-    }
   }
 }
