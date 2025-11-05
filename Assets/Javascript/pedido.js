@@ -31,30 +31,37 @@ if (select_mode && select_mode_bolinha) {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   if (header) header.classList.add("start");
   if (menu_for_phones) menu_for_phones.classList.add("start");
   if (login) login.classList.add("start");
   if (nav) nav.classList.add("start");
-onUserStateChanged(async(user) => {
-  if(user) {
-        try {
-          const userRef = doc(db, "users", user.uid);
-          const userSnap = await getDoc(userRef);
-
-          if (userSnap.exists()) {
-            const userData = userSnap.data();
-            const profissionalTela = document.getElementById("tela");
-
-            if (userData.tipo === "profissional" && profissionalTela) {
-              profissionalTela.style.display = "none";
-            }
+  verificarEstado();
+  onUserStateChanged(async (user) => {
+    if (user) {
+      if (buttonlogin) buttonlogin.style.display = "none";
+      if (use) use.style.display = "flex";
+      const name_area = document.getElementById("nome");
+      if (name_area) name_area.innerHTML = user.email;
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          const profissionalTela = document.getElementById("tela");
+          if (userData.tipo === "profissional" && profissionalTela) {
+            profissionalTela.style.display = "none";
           }
-        } catch (error) {
-          console.error("Erro ao verificar tipo de usuário:", error);
         }
-  }
-})
+      } catch (error) {
+        console.error("Erro ao verificar tipo de usuário:", error);
+      }
+    } else {
+      if (buttonlogin) buttonlogin.style.display = "flex";
+      if (use) use.style.display = "none";
+    }
+  });
   const theme = localStorage.getItem("theme");
   if (theme === "dark") {
     if (select_mode_bolinha) select_mode_bolinha.classList.remove("ativado");
@@ -64,6 +71,7 @@ onUserStateChanged(async(user) => {
     html.classList.add("ativado");
   }
 });
+
 const firebaseConfig = {
   apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
   authDomain: "spuma-banco.firebaseapp.com",
@@ -83,18 +91,6 @@ function onUserStateChanged(callback) {
   onAuthStateChanged(auth, callback);
 }
 
-onUserStateChanged(async (user) => {
-  if (user) {
-    if (buttonlogin) buttonlogin.style.display = "none";
-    if (use) use.style.display = "flex";
-    const name_area = document.getElementById("nome");
-    if (name_area) name_area.innerHTML = user.email;
-
-  } else {
-    if (buttonlogin) buttonlogin.style.display = "flex";
-    if (use) use.style.display = "none";
-  }
-});
 const pedido_botao = document.getElementById("pedido-botao");
 if (pedido_botao) {
   pedido_botao.addEventListener("click", function () {
@@ -112,6 +108,7 @@ async function realizarPedido(id) {
     alert("Erro ao atualizar pedido. Tente novamente.");
   }
 }
+
 const input_rua = document.getElementById("pedidos");
 const analisar = document.getElementById("analisar");
 
@@ -122,7 +119,6 @@ if (analisar) {
       const querySnapshot = await getDocs(collection(db, "pedidos"));
       const lista = document.getElementById("lista");
       if (lista) lista.innerHTML = "";
-
       querySnapshot.forEach((docSnap) => {
         const datas = docSnap.data();
         const idPedido = docSnap.id;
@@ -130,7 +126,6 @@ if (analisar) {
           adicional_1 = "",
           adicional_2 = "";
         const enderecos = datas.endereco;
-
         if (!datas.plano_detalhado) {
           plano = "Lavagem Simples";
           adicional_1 = datas.revitalizacao_plasticos
@@ -142,16 +137,13 @@ if (analisar) {
         } else {
           plano = "Lavagem Detalhada";
         }
-
         const div = document.createElement("div");
         div.classList.add("pedidoslista");
-
         let tele = datas.telefone_do_cliente || "";
         tele = tele.replace(/\D/g, "");
         if (!tele.startsWith("55")) {
           tele = "55" + tele;
         }
-
         div.innerHTML = `
           <div class="esquerda-pedido">
             <h1>${datas.carro || "Carro não informado"}, ${
@@ -182,10 +174,8 @@ if (analisar) {
         } else {
           div.style.display = "none";
         }
-
         if (lista) lista.appendChild(div);
       });
-
       const botoes = document.querySelectorAll(".realizar");
       botoes.forEach((botao) => {
         botao.addEventListener("click", async (e) => {
@@ -199,12 +189,13 @@ if (analisar) {
     }
   });
 }
+
 function marcarCheckbox() {
   const checkbox = document.getElementById("formulario");
   if (checkbox) {
-   checkbox.disabled = false;
-   checkbox.checked = true;
-   checkbox.disabled = true;
+    checkbox.disabled = false;
+    checkbox.checked = true;
+    checkbox.disabled = true;
     localStorage.setItem("formularioFeito", "true");
   }
 }
@@ -213,7 +204,6 @@ async function atualizarUsuarioParaProfissional(userId) {
   try {
     const userRef = doc(db, "users", userId);
     const userSnap = await getDoc(userRef);
-
     if (userSnap.exists()) {
       await updateDoc(userRef, {
         tipo: "profissional",
@@ -229,56 +219,25 @@ async function atualizarUsuarioParaProfissional(userId) {
     alert("Erro ao atualizar usuário. Tente novamente.");
   }
 }
+
 function verificarEstado() {
-  const checkbox = document.getElementById("formulario");
-  const referer = document.referrer;
-  if (referer && referer.includes("formResponse")) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const formSubmitted = urlParams.get("formSubmitted");
+  if (formSubmitted === "true") {
     marcarCheckbox();
     const user = auth.currentUser;
     if (user) {
       atualizarUsuarioParaProfissional(user.uid);
     }
+    const newUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
   }
-
   if (localStorage.getItem("formularioFeito") === "true") {
+    const checkbox = document.getElementById("formulario");
     if (checkbox) {
       checkbox.disabled = false;
       checkbox.checked = true;
       checkbox.disabled = true;
     }
   }
-}
-
-document.addEventListener("DOMContentLoaded", verificarEstado);
-window.addEventListener("focus", verificarEstado);
-document.addEventListener("visibilitychange", function () {
-  if (!document.hidden) verificarEstado();
-});
-
-const quero = document.getElementById("quero-comecar");
-if (quero) {
-  quero.addEventListener("click", async function () {
-    try {
-      const formulario = document.getElementById("formulario");
-      if (!formulario || !formulario.checked) {
-        alert(
-          "Por favor, marque que você fez o formulário antes de continuar!"
-        );
-      } else {
-        const user = auth.currentUser;
-        if (user) {
-          await atualizarUsuarioParaProfissional(user.uid);
-
-          const profissional = document.getElementById("tela");
-          if (profissional) {
-            profissional.style.display = "none";
-          }
-        } else {
-          alert("Você precisa estar logado para continuar.");
-        }
-      }
-    } catch (error) {
-      console.error("Erro no processo:", error);
-    }
-  });
 }
