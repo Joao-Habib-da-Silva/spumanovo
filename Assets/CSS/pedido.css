@@ -161,6 +161,10 @@ input[type="checkbox"]:checked {
     border: none;
     position: relative;
     z-index: 10;
+    display: flex;
+    font-family: "roboto";
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
                 transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
