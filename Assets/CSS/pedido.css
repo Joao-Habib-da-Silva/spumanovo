@@ -225,6 +225,9 @@ input[type="checkbox"]:checked {
         min-height: 80vh;
 
     }
+    #profissional {
+        min-height: 55vh;
+    }
 }
 @media(max-width:320px) {
     .pedidoslista {
