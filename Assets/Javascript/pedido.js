@@ -234,9 +234,7 @@ function verificarEstado() {
   if (localStorage.getItem("formularioFeito") === "true") {
     const checkbox = document.getElementById("formulario");
     if (checkbox) {
-      checkbox.disabled = false;
       checkbox.checked = true;
-      checkbox.disabled = true;
     }
   }
 }
