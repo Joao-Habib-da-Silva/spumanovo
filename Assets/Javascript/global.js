@@ -65,3 +65,14 @@ pedido_botao.addEventListener("click", function() {
   location.href =
     "./produto.html#area-pedido";
 })
+const lenis = new Lenis({
+  duration: 1.2, // tempo da inércia
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // curva suave
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);

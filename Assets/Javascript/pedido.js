@@ -110,14 +110,18 @@ analisar.addEventListener("click", async function () {
     div.innerHTML = `
       <div class="esquerda-pedido">
         <h1>${datas.carro}, ${datas.endereco}</h1>
-        <p class="preco">Preço: R$ ${datas.preco}</p>
+        <div class="conteudo"><p class="preco">Preço: R$ ${datas.preco}</p>
         <p class="telefone">Telefone: ${datas.telefone_do_cliente}</p>
         <div class="detalhes">
-          <p>${plano} ${adicional_1} ${adicional_2}</p>
+          <p>${plano} ${adicional_1} ${adicional_2}</p></div>
         </div>
       </div>
       <div class="direita-pedido">
-        <a href="https://wa.me/55${datas.telefone_do_cliente}?text=${encodeURIComponent("Olá, tudo bem? Vi seu pedido aqui!")}"><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>
+        <a href="https://wa.me/55${
+          datas.telefone_do_cliente
+        }?text=${encodeURIComponent(
+      "Olá, tudo bem? Vi seu pedido aqui!"
+    )}"><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>
       </div>
     `;
 

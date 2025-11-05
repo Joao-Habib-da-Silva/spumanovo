@@ -107,12 +107,14 @@
     width: 10000vh;
     display: flex;
     overflow: hidden;
+    opacity: 0;
     padding-left: 100px;
     transform: translateX(-130px);
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
 }
 #roleta.start {
   transform: translateX(0px);
+  opacity: 1;
 }
 #lupa {
     background-color: var(--dark-light);
@@ -321,7 +323,7 @@
     width: 40vh;
     margin-right: 60px;
     height: 7vh;
-    
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 #pesquisa-parte input {
     background-color: var(--dark-light);
@@ -333,6 +335,12 @@
     width: 85%;
     font-family: "roboto";
     color: var(--light);
+}
+#pesquisa-lupa {
+  transform: translateY(-150px);
+}
+#pesquisa-lupa.start {
+  transform: translateY(0px);
 }
 #input::placeholder {
     color: var(--light);
@@ -349,10 +357,15 @@ border-radius: 05px;
 transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
 height: 7vh;
 font-weight: 700;
+transform: translateY(-150px);
+opacity: 0;
 font-size: 1.2rem;
 font-family: "Roboto";
 }
-
+select.start {
+  opacity: 1;
+  transform: translateY(0px);
+}
 select option {
   font-family: "Roboto";
 }

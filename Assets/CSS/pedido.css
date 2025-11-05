@@ -17,13 +17,11 @@
     height: 50px;
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
     background-color: var(--dark-light);
-    scale: 1.0;    
     font-size: 1.2rem;
 }
 #analisar:hover {
     background-color: var(--light-dark);
     color: var(--dark);
-    scale: 1.1;
 }
 #profissional h1 {
     border-radius: 10px 10px 0px 0px;
@@ -155,30 +153,46 @@ input[type="checkbox"]:checked {
     padding-bottom: 20px;
 }
 .realizar {
-    border: 2px solid var(--light);
     background-color: var(--light-dark);
     width: 150px;
     height: 50px;
     color: var(--dark);
     font-weight: 700;
     text-transform: uppercase;
+    border: none;
+    position: relative;
+    z-index: 10;
     border-radius: 10px;
                 transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
+.realizar::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    z-index: -1;
+    top: 0;
+    background-color: var(--dark);
+    width: 0px;
+    border-radius: 10px;
+    height: 50px;
+                    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+.realizar:hover::after {
+    width: 150px;
+}
 .realizar:hover {
     color: var(--light);
-    background-color: var(--dark);
 }
 .esquerda-pedido p {
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
     padding-left: 20px;
     font-size: 1.5rem;
     margin-left: 20px;
 }
-.esquerda-pedido p:first-child {
-    margin-top: 10px;
+.conteudo {
+    margin-top: 20px;
 }
 .esquerda-pedido h1 {
     margin-top: 20px;

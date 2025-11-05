@@ -25,7 +25,15 @@
 #container-oque-esquerda img {
     width: 40rem;
     border-radius: 10px;
+    opacity: 0;
+    margin-top:50px; 
     height: 30rem;
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transform: translateX(-150px);
+}
+#imagem-membros.start {
+    transform: translateX(0px);
+    opacity: 1;
 }
 #quem-sao-os-membros {
     height: 200vh;
@@ -72,4 +80,14 @@
     align-items: center;
     margin-top: 20px;
     justify-content: center;
+}
+.membro-baixo p {
+    background-color: green;
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: center ;
+    font-weight: 600;
+    font-family: "Roboto";
+    font-size: 1.25rem;
+    margin-top: 20px;
 }

@@ -508,3 +508,9 @@ finalizar_pedido.addEventListener("click", async function () {
     console.error("Erro ao criar pedido:", error);
   }
 });
+window.addEventListener("DOMContentLoaded", function () {
+  roleta.classList.add("start");
+  const pesquisa_lupa = window.document.getElementById("pesquisa-lupa")
+  pesquisa_lupa.classList.add("start")
+  seletor.classList.add("start")
+});
