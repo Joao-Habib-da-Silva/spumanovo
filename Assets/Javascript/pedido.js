@@ -117,7 +117,7 @@ analisar.addEventListener("click", async function () {
         </div>
       </div>
       <div class="direita-pedido">
-        <a href="https://wa.me/${datas.telefone_do_cliente}?text="><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>
+        <a href="https://wa.me/${datas.telefone_do_cliente}?text=${encodeURIComponent("Olá, tudo bem? Vi seu pedido aqui!")}"><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>
       </div>
     `;
 
