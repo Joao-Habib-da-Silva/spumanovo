@@ -63,16 +63,5 @@ const pedido_botao = window.document.getElementById("pedido-botao")
 pedido_botao.addEventListener("click", function() {
   const pedidosdiv = window.document.getElementById("area-pedido")
   location.href =
-    "./produto.html#area-pedido";
+    "./Pages/produto.html#area-pedido";
 })
-const lenis = new Lenis({
-  duration: 1.2, // tempo da inércia
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // curva suave
-});
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);

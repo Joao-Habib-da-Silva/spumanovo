@@ -107,18 +107,23 @@ analisar.addEventListener("click", async function () {
     }
     const div = document.createElement("div");
     div.classList.add("pedidoslista");
+    let tele = datas.telefone_do_cliente
+    tele = tele.replace(/\D/g, '')
+    if (!telefone.startsWith("55")) {
+      telefone = "55" + telefone;
+    }
     div.innerHTML = `
       <div class="esquerda-pedido">
         <h1>${datas.carro}, ${datas.endereco}</h1>
         <div class="conteudo"><p class="preco">Preço: R$ ${datas.preco}</p>
-        <p class="telefone">Telefone: ${datas.telefone_do_cliente}</p>
+        <p class="telefone">Telefone: ${tele}</p>
         <div class="detalhes">
           <p>${plano} ${adicional_1} ${adicional_2}</p></div>
         </div>
       </div>
       <div class="direita-pedido">
         <a href="https://wa.me/55${
-          datas.telefone_do_cliente
+          tele
         }?text=${encodeURIComponent(
       "Olá, tudo bem? Vi seu pedido aqui!"
     )}"><button class="realizar" data-id="${idPedido}">Realizar pedido</button></a>

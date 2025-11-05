@@ -200,3 +200,38 @@ input[type="checkbox"]:checked {
     font-size: 1.5rem;
     font-weight: 500;
 }
+@media(max-width:700px) {
+    .esquerda-pedido {
+            width: 100%;
+            height: 60%;
+        }
+    
+        .esquerda-pedido p {
+            margin-top: 30px;
+            margin-left: 0px;
+        }
+    
+        .direita-pedido {
+            height: 40%;
+            width: 100%;
+        }
+}
+@media(min-width:321px) and (max-width:700px) {
+    .pedidoslista {
+        margin-left: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 95%;
+        display: block;
+        min-height: 80vh;
+
+    }
+}
+@media(max-width:320px) {
+    .pedidoslista {
+        margin-left: 5px;
+        width: 95%;
+        display: block;
+        min-height:80vh ;
+    }
+}
