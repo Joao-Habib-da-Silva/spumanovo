@@ -36,7 +36,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (menu_for_phones) menu_for_phones.classList.add("start");
   if (login) login.classList.add("start");
   if (nav) nav.classList.add("start");
+onUserStateChanged(async(user) => {
+  if(user) {
+        try {
+          const userRef = doc(db, "users", user.uid);
+          const userSnap = await getDoc(userRef);
 
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            const profissionalTela = document.getElementById("tela");
+
+            if (userData.tipo === "profissional" && profissionalTela) {
+              profissionalTela.style.display = "none";
+            }
+          }
+        } catch (error) {
+          console.error("Erro ao verificar tipo de usuário:", error);
+        }
+  }
+})
   const theme = localStorage.getItem("theme");
   if (theme === "dark") {
     if (select_mode_bolinha) select_mode_bolinha.classList.remove("ativado");
@@ -71,21 +89,7 @@ onUserStateChanged(async (user) => {
     if (use) use.style.display = "flex";
     const name_area = document.getElementById("nome");
     if (name_area) name_area.innerHTML = user.email;
-    try {
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
 
-      if (userSnap.exists()) {
-        const userData = userSnap.data();
-        const profissionalTela = document.getElementById("tela");
-
-        if (userData.tipo === "profissional" && profissionalTela) {
-          profissionalTela.style.display = "none";
-        }
-      }
-    } catch (error) {
-      console.error("Erro ao verificar tipo de usuário:", error);
-    }
   } else {
     if (buttonlogin) buttonlogin.style.display = "flex";
     if (use) use.style.display = "none";
