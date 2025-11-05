@@ -109,6 +109,7 @@ input[type="checkbox"] {
     justify-content: center;
     z-index: 1000;
     height: 100%;
+    display: none;
 }   
 input[type="checkbox"] {
     --webkit-appearance: none;
@@ -218,6 +219,10 @@ input[type="checkbox"]:checked {
             height: 40%;
             width: 100%;
         }
+                #filtrador {
+                    display: block;
+                    height: 35vh;
+                }   
 }
 @media(min-width:321px) and (max-width:700px) {
     .pedidoslista {
@@ -232,6 +237,15 @@ input[type="checkbox"]:checked {
     #profissional {
         min-height: 55vh;
     }
+    #filtrador {
+        display: block;
+        height: 35vh;
+    }
+    #analisar {
+        margin: 0;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
 }
 @media(max-width:320px) {
     .pedidoslista {
@@ -239,5 +253,9 @@ input[type="checkbox"]:checked {
         width: 95%;
         display: block;
         min-height:80vh ;
+    }
+    #analisar {
+        margin: 0;
+        margin-left: 30px;
     }
 }
