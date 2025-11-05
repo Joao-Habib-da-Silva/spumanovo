@@ -28,9 +28,7 @@ cadastroligar.addEventListener("click", async function cadastrar() {
   const check_politicas = window.document.getElementById("check-politicas")
   const check_diretrizes = window.document.getElementById("check-termos")
   const aviso = window.document.getElementById("aviso")
-  if(!email.includes("@")) {
-    aviso.innerHTML = "Seu email está incorreto, não possuí arroba"
-  }
+ 
   if (!nome ||!email || !senha || !data || !cep || !rua || !bairro || !cidade || !estado || !telefone || !check_politicas.checked || !check_diretrizes.checked) {
     aviso.style.display = "block"
     aviso.innerHTML = "<h1>Preencha todos os campos</h1>"
