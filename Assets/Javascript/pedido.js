@@ -202,7 +202,9 @@ if (analisar) {
 function marcarCheckbox() {
   const checkbox = document.getElementById("formulario");
   if (checkbox) {
-    checkbox.checked = true;
+   checkbox.disabled = false;
+   checkbox.checked = true;
+   checkbox.disabled = true;
     localStorage.setItem("formularioFeito", "true");
   }
 }
@@ -227,22 +229,23 @@ async function atualizarUsuarioParaProfissional(userId) {
     alert("Erro ao atualizar usuário. Tente novamente.");
   }
 }
-
 function verificarEstado() {
   const checkbox = document.getElementById("formulario");
-  const urlParams = new URLSearchParams(window.location.search);
-
-  if (urlParams.get("form") === "done") {
+  const referer = document.referrer;
+  if (referer && referer.includes("formResponse")) {
     marcarCheckbox();
     const user = auth.currentUser;
     if (user) {
       atualizarUsuarioParaProfissional(user.uid);
     }
-    window.history.replaceState(null, null, window.location.pathname);
   }
 
   if (localStorage.getItem("formularioFeito") === "true") {
-    if (checkbox) checkbox.checked = true;
+    if (checkbox) {
+      checkbox.disabled = false;
+      checkbox.checked = true;
+      checkbox.disabled = true;
+    }
   }
 }
 
