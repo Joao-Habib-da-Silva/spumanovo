@@ -328,7 +328,7 @@ header img {
     justify-content: center;
     height: 100%;
     color: var(--dark);
-    font-size: 15px;
+    font-size: 11px;
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 #loginoubotao {

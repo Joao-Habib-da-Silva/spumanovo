@@ -277,7 +277,7 @@ seta_direita.addEventListener("click", function () {
   n += 1;
   let roletorgrau = 178;
   if (window.innerWidth > 1600) {
-    roletorgrau = 70;
+    roletorgrau = 175;
   }
   if (n > 0) {
     seta_esquerda.classList.add("opacidade");
