@@ -43,7 +43,7 @@
     opacity: 1;
 }
 #quem-sao-os-membros {
-    height: 200vh;
+    min-height: 200vh;
 }
 #linha1, #linha2 {
     height: 100vh;
@@ -65,6 +65,14 @@
     border-bottom:6px solid var(--dark) ;
     border-radius: 10px 10px 0px 0px;
     height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.membro-cima img {
+    width: 200px;
+    border-radius: 10px;
+    height: 200px;
 }
 @media(max-width:800px) {
     #container-oque {
@@ -78,6 +86,23 @@
         width: 100%;
         text-align: center;
         padding-top: 50px;
+    }
+    #linha1 {
+        display: block;
+        height: 410vh;
+        padding-top: 20px;
+    }
+    .membro {
+        width: 80%;
+        height: 32%;
+        margin: 0;
+        margin-left: 9%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    #linha2 {
+        display: block;
+        height: 210vh;
     }
 }
 .membro-baixo-nome {
