@@ -198,13 +198,14 @@ input[type="checkbox"]:checked {
         width: 90%;
 }
 #aviso {
-    display: none;
     width: 100%;
+    margin-top: 20px;
     text-align: center;
     padding-top: 20px;
     color: var(--light);
     font-size: 0.75rem;
-    height: 08%;
+    height: 50%;
+    text-align: center;
 }
 #modo-dark-and-light {
     margin-right: 10px;
