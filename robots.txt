@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://joao-habib-da-silva.github.io/spumanovo/sitemap.xml
