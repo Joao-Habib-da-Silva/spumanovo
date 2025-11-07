@@ -112,7 +112,7 @@ video {
 @media (max-width: 500px) {    
     video {
         height: 110vh;
-        object-fit: contain;
+        object-fit: fill;
     }
     #home-opacity {
         height: 110vh;
@@ -142,7 +142,7 @@ video {
     }
     video {
         width: 100%;
-        object-fit: cover;
+        object-fit: fill;
         height: 120vh;
     }
     #home-opacity {
