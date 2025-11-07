@@ -220,3 +220,10 @@ input::placeholder {
         width: 95vh;
     }
 }
+#esqueceu {
+    background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 1.0rem;
+    color: var(--light-dark);
+}

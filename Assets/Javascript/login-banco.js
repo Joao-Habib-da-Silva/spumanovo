@@ -61,3 +61,7 @@ botao_google.addEventListener("click", async function() {
     throw error
   }
 })
+const esqueceu_senha = window.document.getElementById("esqueceu")
+esqueceu_senha.addEventListener("click", async function() {
+
+})

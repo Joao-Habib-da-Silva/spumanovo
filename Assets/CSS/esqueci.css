@@ -1,0 +1,81 @@
+@import url("./global.css");
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#esqueci-bloco {
+    width: 50vw ;
+    border-radius: 10px;
+    height: 70vh;
+    background-color: var(--dark-light);
+    font-family: "roboto";
+}
+#esqueci-bloco h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+#esqueci-bloco-alinhado {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#esqueci-bloco-centro {
+    width: 50%;
+    text-align: center;
+}
+input {
+    background-color: var(--dark-light);
+    border: 4px solid var(--light-dark);
+    width: 250px;
+    height: 50px;
+    color: var(--light);
+    padding-left: 20px;
+    border-radius:10px ;
+}
+button {
+    position: relative;
+    width: 170px;
+    margin-top: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--dark-light);
+    border: 3px solid var(--light-dark);
+    z-index: 10;
+    font-size: 1.2rem;
+    font-weight: 600;
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    color:var(--light);
+}
+#aviso {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -100px;
+    margin-top: 25px;
+}
+button::after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    background-color: var(--light);
+    width: 0px;
+    height: 47px;
+    border-radius: 7px;
+    top: 0;
+    left: 0;
+            transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+button:hover::after {
+    width: 167px;
+}
+button:hover {
+    color: var(--dark-light);
+}

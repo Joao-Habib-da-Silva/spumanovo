@@ -22,7 +22,7 @@
     position: absolute;
     z-index: 10000;
     width: 5%;
-    height:45rem;
+    height:43rem;
     background-color: var(--dark);
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
 
@@ -381,10 +381,6 @@ select:hover {
     opacity: 1;
     cursor: pointer;
 }
-.desabilitado {
-    opacity: 0.3;
-    cursor:not-allowed;
-}
 .products {
     width: 55vh;
     height: 90%;
@@ -478,8 +474,13 @@ select:hover {
     text-transform: uppercase;
 }
 .products img {
-    width: 200px;
+    width: 150px;
     height: 200px;
+    object-fit: contain;
+}
+#seta-direita.opacidade {
+  opacity: 0.1;
+  cursor: not-allowed;
 }
 @media(min-width:0px) and (max-width: 1450px) {
     #seta-esquerda, #seta-direita {
