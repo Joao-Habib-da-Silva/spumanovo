@@ -31,8 +31,8 @@ async function enviarEmailRedefinicao() {
 
   try {
     const actionCodeSettings = {
-      url: "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html",
-      handleCodeInApp: false,
+      url: "https://joao-habib-da-silva.github.io/spumanovo/Pages/redefinir.html",
+      handleCodeInApp: true,
     };
 
     await sendPasswordResetEmail(auth, emailValue, actionCodeSettings);
@@ -46,7 +46,7 @@ async function enviarEmailRedefinicao() {
     } else if (error.code === "auth/invalid-email") {
       aviso.innerHTML = "E-mail inválido. Tente novamente.";
     } else {
-      aviso.innerHTML = `⚠️ Erro ao enviar o e-mail: ${error.code}`;
+      aviso.innerHTML = `Erro ao enviar o e-mail: ${error.code}`;
     }
   }
 }

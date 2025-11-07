@@ -1,0 +1,64 @@
+@import url("../CSS/global.css");
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#redefinir-senha {
+    background-color: var(--dark-light);
+    width: 50vw;
+    border-radius: 10px;
+    height: 80vh;
+    text-align: center;
+    padding-top: 200px;
+}
+input {
+    background-color: var(--dark-light);
+    border: 3px solid var(--light-dark);
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+button {
+    position: relative;
+        width: 170px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: var(--dark-light);
+        border: 3px solid var(--light-dark);
+        z-index: 10;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        color: var(--light);
+}
+button::after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    background-color: var(--light);
+    width: 0px;
+    height: 47px;
+    border-radius: 7px;
+    top: 0;
+    left: 0;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+button:hover::after {
+    width: 167px;
+}
+
+button:hover {
+    color: var(--dark-light);
+}
+#aviso {
+    width: 100%;
+    font-family: "roboto";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 100px;
+}

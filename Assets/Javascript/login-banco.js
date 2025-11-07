@@ -44,7 +44,7 @@ botao.addEventListener("click", async function() {
         const email = window.document.getElementById("email").value
         const senha = window.document.getElementById("senhas").value
         const cred = await signInWithEmailAndPassword(auth, email, senha)
-        history.back()
+        location.href = "https://joao-habib-da-silva.github.io/spumanovo/";
       }catch(error) {
         console.error(error)
       }
