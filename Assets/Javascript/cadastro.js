@@ -28,11 +28,17 @@ cep.addEventListener("input", async function() {
       console.error(error)  
     }
 })
+const fora = window.document.getElementById("fora")
 button_politica.addEventListener("click", function() {
     explicacao.classList.add("ligado")
+    fora.classList.add("ligado")
     explicacao.innerHTML = `${privacidade}`
 })
+fora.addEventListener("click", function() {
+    fora.style.display = "none"
+})
 button_termos.addEventListener("click", function() {
+    fora.classList.add("ligado")
     explicacao.classList.add("ligado")
     explicacao.innerHTML = `${termos}`
 })

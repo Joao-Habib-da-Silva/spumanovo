@@ -100,10 +100,10 @@ async function realizarPedido(id) {
   try {
     const pedidoRef = doc(db, "pedidos", id);
     await updateDoc(pedidoRef, { execucao_feita: true });
-    alert("✅ Pedido marcado como realizado!");
+    alert("Pedido marcado como realizado!");
   } catch (error) {
     console.error("Erro ao atualizar pedido:", error);
-    alert("❌ Erro ao atualizar pedido. Tente novamente.");
+    alert("Erro ao atualizar pedido. Tente novamente.");
   }
 }
 

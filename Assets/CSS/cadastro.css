@@ -133,13 +133,25 @@ input {
 input::placeholder {
     color: var(--light-dark);
 }
+#fora {
+    background-color:rgb(2, 4, 15);
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+#fora.ligado {
+    display: flex;
+}
 #explicacao {
     width: 40%;
     left: 30%;
     z-index: 1000;
     background-color: var(--dark-light);
     border-radius: 20px;
-    position: fixed;
     display: none;
     height: 100vh;
     padding: 25px;
@@ -247,5 +259,9 @@ a:hover, #esqueci:hover {
     #cadastro {
         width: 90%;
         margin-left: 0px;
+    }
+    #explicacao {
+        width: 80%;
+        margin:0;
     }
 }
