@@ -32,7 +32,7 @@ async function enviarEmailRedefinicao() {
   try {
     const actionCodeSettings = {
       url: "https://joao-habib-da-silva.github.io/spumanovo/Pages/redefinir.html",
-      handleCodeInApp: true,
+      handleCodeInApp: false,
     };
 
     await sendPasswordResetEmail(auth, emailValue, actionCodeSettings);
