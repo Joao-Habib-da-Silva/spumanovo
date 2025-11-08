@@ -47,7 +47,18 @@ botao.addEventListener("click", async function() {
         const cred = await signInWithEmailAndPassword(auth, email, senha)
         location.href = "https://joao-habib-da-silva.github.io/spumanovo/";
       }catch(error) {
-        console.error(error)
+         if (error.code === "permission-denied") {
+           aviso.innerHTML =
+             "Permissão negada. Verifique as regras do Firestore.";
+         } else if (error.code === "unavailable") {
+           aviso.innerHTML = "Serviço indisponível. Tente mais tarde.";
+         } else if (error.code === "deadline-exceeded") {
+           aviso.innerHTML = "Operação demorou demais. Verifique a conexão.";
+         } else if (error.code === "resource-exhausted") {
+           aviso.innerHTML = "Limite de uso excedido. Atualize o plano.";
+         } else if (error.code === "invalid-argument") {
+           aviso.innerHTML = "Dados inválidos. Contate o suporte.";
+         }
       }
 })
 botao_google.addEventListener("click", async function() {
@@ -58,17 +69,7 @@ botao_google.addEventListener("click", async function() {
     history.back()
     return user
   }catch(error) {
-            if (error.code === "permission-denied") {
-            aviso.innerHTML = "Permissão negada. Verifique as regras do Firestore.";
-            } else if (error.code === "unavailable") {
-              aviso.innerHTML = "Serviço indisponível. Tente mais tarde.";
-            } else if (error.code === "deadline-exceeded") {
-              aviso.innerHTML = "Operação demorou demais. Verifique a conexão.";
-            } else if (error.code === "resource-exhausted") {
-              aviso.innerHTML = "Limite de uso excedido. Atualize o plano.";
-            } else if (error.code === "invalid-argument") {
-              aviso.innerHTML = "Dados inválidos. Contate o suporte.";
-            }
+    console.log(error)
     throw error
   }
 })
