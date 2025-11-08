@@ -22,6 +22,8 @@ input {
     background-color: var(--dark-light);
     border: 3px solid var(--light-dark);
     height: 50px;
+    padding-left: 25px;
+    color: var(--light);
     width: 50%;
     border-radius: 10px;
     margin-bottom: 50px;

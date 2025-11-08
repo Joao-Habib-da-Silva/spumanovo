@@ -205,7 +205,9 @@ input[type="checkbox"]:checked {
     color: var(--light);
     font-size: 0.75rem;
     height: 50%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #modo-dark-and-light {
     margin-right: 10px;

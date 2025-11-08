@@ -34,7 +34,8 @@ botao.addEventListener("click", async function() {
         await confirmPasswordReset(auth, oobCode, senha_value);
         aviso.innerHTML = "Senha redefinida com sucesso.";
         setTimeout(() => {
-          window.location.href = "";
+          window.location.href =
+            "https://joao-habib-da-silva.github.io/spumanovo/Pages/login.html";
         }, 2500);
       } catch (error) {
         console.error(error);

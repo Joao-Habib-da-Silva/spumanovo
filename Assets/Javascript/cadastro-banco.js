@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { atomicStore } from "three/tsl";
 const firebaseConfig = {
   apiKey: "AIzaSyCH7lpKD9aMWorbk_pk3mxlcGXt21GM6lM",
   authDomain: "spuma-banco.firebaseapp.com",
@@ -54,7 +55,22 @@ cadastroligar.addEventListener("click", async function cadastrar() {
     aviso.innerHTML = "<h1>Cadastrado com sucesso</h1>"
     history.back()
   } catch (error) {
-    console.error("Erro ao cadastrar:", error.message);
-    aviso.innerHTML = `Erro: ${error}`
+   if(error.code === "auth/email-already-in-use") {
+    aviso.innerHTML = "Esse email já está sendo usado"
+   }else if (error.code === "auth/invalid-email"){
+    aviso.innerHTML = "Email invalido, tente novamente"
+   }
+   else if(error.code === "auth/weak-password") {
+    aviso.innerHTML = "Senha fraca, deve ter pelo menos seis caracteres"
+   }
+   else if(error.code == "auth/operation-not-allowed") {
+    aviso.innerHTML = "O cadastro está desabilitado no nosso console. Contate o suporte imediatamente"
+   }
+   else if(error.code == "auth/too-many-requests") {
+    aviso.innerHTML = "Você tentou cadastrar muitas vezes, aguarde um pouco, e tente novamente"
+   }
+   else if(error.code == "auth/network-request-failed") {
+    aviso.innerHTML ="Verifique sua rede "
+   }
   }
 });

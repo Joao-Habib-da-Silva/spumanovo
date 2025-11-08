@@ -11,6 +11,7 @@ const firebaseConfig = {
   appId: "1:447336546434:web:23802d28de45fbedc2349b",
   measurementId: "G-4BJ95WYKF5",
 };
+const aviso = window.document.getElementById("aviso")
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const botao = window.document.getElementById("button-enviar")
@@ -57,7 +58,17 @@ botao_google.addEventListener("click", async function() {
     history.back()
     return user
   }catch(error) {
-    console.error(error)
+            if (error.code === "permission-denied") {
+            aviso.innerHTML = "Permissão negada. Verifique as regras do Firestore.";
+            } else if (error.code === "unavailable") {
+              aviso.innerHTML = "Serviço indisponível. Tente mais tarde.";
+            } else if (error.code === "deadline-exceeded") {
+              aviso.innerHTML = "Operação demorou demais. Verifique a conexão.";
+            } else if (error.code === "resource-exhausted") {
+              aviso.innerHTML = "Limite de uso excedido. Atualize o plano.";
+            } else if (error.code === "invalid-argument") {
+              aviso.innerHTML = "Dados inválidos. Contate o suporte.";
+            }
     throw error
   }
 })
