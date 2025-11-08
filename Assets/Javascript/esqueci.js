@@ -41,6 +41,7 @@ async function enviarEmailRedefinicao() {
     email.value = ""; 
   } catch (error) {
     console.error(error);
+    aviso.style.color = "red"
     if (error.code === "auth/user-not-found") {
       aviso.innerHTML = "Nenhuma conta encontrada com esse e-mail.";
     } else if (error.code === "auth/invalid-email") {

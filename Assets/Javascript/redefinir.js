@@ -40,9 +40,9 @@ botao.addEventListener("click", async function() {
       } catch (error) {
         console.error(error);
         if (error.code === "auth/invalid-action-code") {
-          msg.innerHTML = "Link inválido ou expirado.";
+          aviso.innerHTML = "Link inválido ou expirado.";
         } else {
-          msg.innerHTML = "Erro ao redefinir senha. Tente novamente.";
+          aviso.innerHTML = "Erro ao redefinir senha. Tente novamente.";
         }
       } finally {
         botao.disabled = false;

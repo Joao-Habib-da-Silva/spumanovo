@@ -55,6 +55,7 @@ cadastroligar.addEventListener("click", async function cadastrar() {
     aviso.innerHTML = "<h1>Cadastrado com sucesso</h1>"
     history.back()
   } catch (error) {
+    aviso.style.color = "red"
    if(error.code === "auth/email-already-in-use") {
     aviso.innerHTML = "Esse email já está sendo usado"
    }else if (error.code === "auth/invalid-email"){

@@ -47,6 +47,7 @@ botao.addEventListener("click", async function() {
         const cred = await signInWithEmailAndPassword(auth, email, senha)
         location.href = "https://joao-habib-da-silva.github.io/spumanovo/";
       }catch(error) {
+        aviso.style.color = "red"
          if (error.code === "permission-denied") {
            aviso.innerHTML =
              "Permissão negada. Verifique as regras do Firestore.";
