@@ -16,7 +16,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const cadastroligar = document.getElementById("button-enviar");
 cadastroligar.addEventListener("click", async function cadastrar() {
-  const email = document.getElementById("email").value;
+  const email = document.getElementById("email").value.trim();
   const nome = window.document.getElementById("nome-cadastro").value;
   const senha = document.getElementById("senha1").value;
   const data = document.getElementById("idade").value;

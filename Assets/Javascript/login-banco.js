@@ -42,7 +42,7 @@ async function criarDocumentoUsuario(user, tipo = "google") {
 }
 botao.addEventListener("click", async function() {
     try {
-        const email = window.document.getElementById("email").value
+        const email = window.document.getElementById("email").value.trim()
         const senha = window.document.getElementById("senhas").value
         const cred = await signInWithEmailAndPassword(auth, email, senha)
         location.href = "https://joao-habib-da-silva.github.io/spumanovo/";
@@ -71,8 +71,4 @@ botao_google.addEventListener("click", async function() {
             }
     throw error
   }
-})
-const esqueceu_senha = window.document.getElementById("esqueceu")
-esqueceu_senha.addEventListener("click", async function() {
-
 })
