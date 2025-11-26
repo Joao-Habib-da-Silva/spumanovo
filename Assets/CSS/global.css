@@ -263,11 +263,6 @@ header img {
     * {
         cursor: none;
     }
-    header.start img {
-        margin-left: 0px;
-        width: 200px;
-        height: 66px;
-    }
     header.start i {
         display: none;
     }
@@ -275,8 +270,9 @@ header img {
         scale: 0.8;
         margin-right: 15%;
     }
-    header img {
+    header.start img {
         width: 100px;
+        margin-left: 0px;
         height: 25px;
     }
 
