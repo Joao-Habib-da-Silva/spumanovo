@@ -259,7 +259,7 @@ header img {
     color: var(--dark);
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     * {
         cursor: none;
     }
@@ -273,7 +273,7 @@ header img {
     }
     header button {
         scale: 0.8;
-        margin-right: -50px;
+        margin-right: 15%;
     }
 
 }
