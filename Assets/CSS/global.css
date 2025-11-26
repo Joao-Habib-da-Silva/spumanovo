@@ -68,6 +68,7 @@ header button:hover {
     min-height: 100vh;
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
     overflow-y: hidden;
+    width: 100%;
     overflow-x: hidden;
 }
 ::selection  {
