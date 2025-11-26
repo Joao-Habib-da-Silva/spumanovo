@@ -3,6 +3,7 @@
     color: var(--light);
     min-height: 100vh;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 #container-inicio {
     display: flex;
