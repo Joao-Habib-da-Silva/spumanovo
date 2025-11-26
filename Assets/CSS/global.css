@@ -275,6 +275,10 @@ header img {
         scale: 0.8;
         margin-right: 15%;
     }
+    header img {
+        width: 100px;
+        height: 25px;
+    }
 
 }
 #user-cabeca {
