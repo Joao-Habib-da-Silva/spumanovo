@@ -41,6 +41,7 @@ header button {
     background-color: var(--dark);
     color: var(--light);
     z-index: 10;
+    margin-right: 100px;
     transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 
 }
@@ -268,7 +269,6 @@ header img {
     }
     header button {
         scale: 0.8;
-        margin-right: 15%;
     }
     header.start img {
         width: 100px;
