@@ -230,7 +230,7 @@ header img {
     font-size:1.5rem;
     color: var(--dark);
     border-radius: 50%;
-    transform:translateY(-70px);
+    transform:translateX(43vw) translateY(-70px);
 }
 #menu-for-phones a {
     display: flex;
