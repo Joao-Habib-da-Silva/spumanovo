@@ -2,6 +2,10 @@
     font-family: "Roboto";
     src: url(../Fonts/Roboto-VariableFont_wdth\,wght.ttf);
 }
+#container, html, body {
+    overflow-x: hidden;
+    position: relative;
+}
 @font-face {
     font-family: "Anton";
     src: url(../Fonts/Anton-Regular.ttf);
