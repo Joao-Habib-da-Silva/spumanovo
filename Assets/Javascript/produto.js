@@ -300,8 +300,6 @@ input.addEventListener("input", function () {
       }
     });
   } else {
-    seta_esquerda.style.display = "block";
-    seta_direita.style.display = "block";
     products.forEach((product) => {
       product.style.display = "block";
     });
