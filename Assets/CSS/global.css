@@ -371,7 +371,6 @@ header img {
 @media (min-width:700px) and (max-width:1240px) {
     header.start nav {
         display: none;
-        margin-left: 50px;
     }
     header.start button {
         display: flex;
