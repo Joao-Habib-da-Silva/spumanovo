@@ -59,9 +59,3 @@ onUserStateChanged(user => {
   use.style.display = "none";
   }
 })
-const pedido_botao = window.document.getElementById("pedido-botao")
-pedido_botao.addEventListener("click", function() {
-  const pedidosdiv = window.document.getElementById("area-pedido")
-  location.href =
-    "./Pages/produto.html#area-pedido";
-})

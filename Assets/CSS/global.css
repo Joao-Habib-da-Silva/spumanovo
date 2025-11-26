@@ -220,18 +220,6 @@ header img {
     position: relative;
     justify-content: center;
 }
-#pedido-botao {
-    background-color: var(--light);
-    border: none;
-    font-weight: 600;
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    font-size:1.5rem;
-    color: var(--dark);
-    border-radius: 50%;
-    transform:translateX(43vw) translateY(-70px);
-}
 #menu-for-phones a {
     display: flex;
     margin-left: 5px;
