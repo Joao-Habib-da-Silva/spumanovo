@@ -271,9 +271,9 @@ header img {
         scale: 0.8;
     }
     header.start img {
-        width: 100px;
+        width: 125px;
         margin-left: 0px;
-        height: 25px;
+        height: 32px;
     }
 
 }
